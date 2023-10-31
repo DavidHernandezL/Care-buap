@@ -8,19 +8,29 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { registerUserSchema } from "../../utils/validationSchemas";
 import { Link } from "react-router-dom";
 import ErrorMessage from "@components/ErrorMessage";
-import { registerRequest } from "../../services/auth";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 import { useForm, FormProvider } from "react-hook-form";
+import { useEffect } from "react";
 
 const Register = () => {
+  const { signUp, isAuthenticated, errors: registerErrors } = useAuth();
   const {
     formState: { errors },
     ...methods
   } = useForm({ resolver: zodResolver(registerUserSchema) });
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/profile");
+    }
+  }, [isAuthenticated]);
+
   const onSubmit = async (data) => {
-    const res = await registerRequest(data);
-    console.log(res);
+    signUp(data);
   };
   return (
     <>
@@ -32,6 +42,11 @@ const Register = () => {
             onSubmit={methods.handleSubmit(onSubmit)}
           >
             <InputSection>
+              {registerErrors?.map(
+                (error) => (
+                  console.log(error), (<ErrorMessage>{error.msg}</ErrorMessage>)
+                )
+              )}
               <Input
                 label="Nombre Completo"
                 name={"fullName"}
