@@ -3,10 +3,11 @@ import EyeOff from "@components/Icons/EyeOff";
 import Eye from "@components/Icons/Eye";
 
 import styled from "styled-components";
+import { useFormContext } from "react-hook-form";
 
 const PwdInput = ({ name, label, ...props }) => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const { register } = useFormContext();
   return (
     <>
       <Container>
@@ -28,6 +29,7 @@ const PwdInput = ({ name, label, ...props }) => {
           id={name}
           name={name}
           type={showPassword ? "text" : "password"}
+          {...register(name)}
           {...props}
         />
       </Container>

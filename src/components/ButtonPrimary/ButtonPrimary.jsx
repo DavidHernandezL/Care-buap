@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const ButtonPrimary = ({ children, type }) => {
-  return <Button type={type}>{children}</Button>;
+const ButtonPrimary = ({ children, type, ...props }) => {
+  return (
+    <Button type={type} {...props}>
+      {children}
+    </Button>
+  );
 };
 
 const Button = styled.button`

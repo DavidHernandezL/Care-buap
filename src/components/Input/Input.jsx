@@ -4,12 +4,15 @@ import Eye from "@components/Icons/Eye";
 
 import styled from "styled-components";
 
+import { useFormContext } from "react-hook-form";
+
 const Input = ({ name, label, ...props }) => {
+  const { register } = useFormContext();
   return (
     <>
       <Container>
         <Label htmlFor={name}>{label}</Label>
-        <InputStyled id={name} name={name} {...props} />
+        <InputStyled id={name} name={name} {...props} {...register(name)} />
       </Container>
     </>
   );

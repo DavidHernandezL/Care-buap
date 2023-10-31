@@ -1,11 +1,24 @@
 import React from "react";
 import MainHeader from "@components/MainHeader";
-import styled from "styled-components";
 import Input from "@components/Input";
-import ButtonPrimary from "../../components/ButtonPrimary";
+import ButtonPrimary from "@components/ButtonPrimary";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
-
+import { useForm, FormProvider } from "react-hook-form";
+import PwdInput from "../../components/PwdInput/PwdInput";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema } from "../../utils/validationSchemas";
+import ErrorMessage from "@components/ErrorMessage";
 const Login = () => {
+  const {
+    formState: { errors },
+    ...methods
+  } = useForm({ resolver: zodResolver(loginSchema) });
+
+  console.log(errors);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
     <>
       <MainHeader
@@ -13,33 +26,45 @@ const Login = () => {
         subtitle={"Ingrese sus credenciales"}
       />
       <Container>
-        <form style={{ width: "100%" }}>
-          <InputSection>
-            <Input
-              label="Matricula"
-              name={"studentId"}
-              {...{
-                placeholder: "Ingrese su matricula",
-                type: "number",
-                inputMode: "numeric",
-                min: 0,
-              }}
-            />
-            <Input
-              label="Contraseña"
-              name={"password"}
-              {...{ placeholder: "Ingrese su contraseña", type: "password" }}
-            />
-            <ButtonPrimary type="submit">Iniciar sesión</ButtonPrimary>
-          </InputSection>
-          <LinkSection>
-            <LinkStyled href="">¿Olvidaste tu contraseña?</LinkStyled>
-            <span>
-              ¿No tienes una cuenta?
-              <LinkStyled to={"/auth/register"}> Regístrate</LinkStyled>
-            </span>
-          </LinkSection>
-        </form>
+        <FormProvider {...methods}>
+          <form
+            style={{ width: "100%" }}
+            onSubmit={methods.handleSubmit(onSubmit)}
+          >
+            <InputSection>
+              <Input
+                label="Matricula"
+                name={"studentId"}
+                {...{
+                  placeholder: "Ingrese su matricula",
+                  type: "number",
+                  inputMode: "numeric",
+                }}
+              />
+              {errors.studentId && (
+                <ErrorMessage>{errors.studentId.message}</ErrorMessage>
+              )}
+              <PwdInput
+                label="Contraseña"
+                name={"password"}
+                {...{ placeholder: "Ingrese su contraseña" }}
+              />
+              {errors.password && (
+                <ErrorMessage>{errors.password.message}</ErrorMessage>
+              )}
+              <ButtonPrimary type="submit">Iniciar sesión</ButtonPrimary>
+            </InputSection>
+            <LinkSection>
+              <LinkStyled to={"/auth/recover-password"}>
+                ¿Olvidaste tu contraseña?
+              </LinkStyled>
+              <span>
+                ¿No tienes una cuenta?
+                <LinkStyled to={"/auth/register"}> Regístrate</LinkStyled>
+              </span>
+            </LinkSection>
+          </form>
+        </FormProvider>
       </Container>
     </>
   );
