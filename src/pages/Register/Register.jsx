@@ -4,70 +4,100 @@ import styled from "styled-components";
 import Input from "@components/Input";
 import PwdInput from "@components/PwdInput";
 import ButtonPrimary from "../../components/ButtonPrimary";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { registerUserSchema } from "../../utils/validationSchemas";
+import { Link } from "react-router-dom";
+import ErrorMessage from "@components/ErrorMessage";
+import { registerRequest } from "../../services/auth";
+
+import { useForm, FormProvider } from "react-hook-form";
 
 const Register = () => {
+  const {
+    formState: { errors },
+    ...methods
+  } = useForm({ resolver: zodResolver(registerUserSchema) });
+
+  const onSubmit = async (data) => {
+    const res = await registerRequest(data);
+    console.log(res);
+  };
   return (
     <>
       <MainHeader title={"Registro"} subtitle={"Ingrese sus datos"} hasIcon />
       <Container>
-        <form style={{ width: "100%" }}>
-          <InputSection>
-            <Input
-              label="Nombre Completo"
-              name={"fullName"}
-              {...{
-                placeholder: "Ingrese su nombre completo",
-                type: "text",
-                inputMode: "text",
-                required: true,
-              }}
-            />
-            <Input
-              label="Matricula"
-              name={"studentId"}
-              {...{
-                placeholder: "Ingrese su matricula",
-                type: "number",
-                inputMode: "numeric",
-                min: 0,
-                required: true,
-              }}
-            />
-            <Input
-              label="Correo Institucional"
-              name={"email"}
-              {...{
-                placeholder: "nombre@alumno.buap.mx",
-                type: "email",
-                inputMode: "email",
-                required: true,
-              }}
-            />
-            <PwdInput
-              label="Contraseña"
-              name={"password"}
-              {...{
-                placeholder: "Ingrese su contraseña",
-                required: true,
-              }}
-            />
-
-            <PwdInput
-              label="Confirmar Contraseña"
-              name={"passwordConfirm"}
-              {...{
-                placeholder: "Confirme su contraseña",
-                required: true,
-              }}
-            />
-            <ButtonPrimary type="submit">Registrarse</ButtonPrimary>
-          </InputSection>
-          <LinkSection>
-            <span>
-              ¿Ya tienes una cuenta?<Link href=""> Ingresar Ahora</Link>
-            </span>
-          </LinkSection>
-        </form>
+        <FormProvider {...methods}>
+          <form
+            style={{ width: "100%" }}
+            onSubmit={methods.handleSubmit(onSubmit)}
+          >
+            <InputSection>
+              <Input
+                label="Nombre Completo"
+                name={"fullName"}
+                {...{
+                  placeholder: "Ingrese su nombre completo",
+                  type: "text",
+                  inputMode: "text",
+                }}
+              />
+              {errors.fullName && (
+                <ErrorMessage>{errors.fullName.message}</ErrorMessage>
+              )}
+              <Input
+                label="Matricula"
+                name={"studentId"}
+                {...{
+                  placeholder: "Ingrese su matricula",
+                  type: "number",
+                  inputMode: "numeric",
+                }}
+              />
+              {errors.studentId && (
+                <ErrorMessage>{errors.studentId.message}</ErrorMessage>
+              )}
+              <Input
+                label="Correo Institucional"
+                name={"email"}
+                {...{
+                  placeholder: "nombre@alumno.buap.mx",
+                  type: "email",
+                  inputMode: "email",
+                }}
+              />
+              {errors.email && (
+                <ErrorMessage>{errors.email.message}</ErrorMessage>
+              )}
+              <PwdInput
+                label="Contraseña"
+                name={"password"}
+                {...{
+                  placeholder: "Ingrese su contraseña",
+                }}
+              />
+              {errors.password && (
+                <ErrorMessage>{errors.password.message}</ErrorMessage>
+              )}
+              <PwdInput
+                label="Confirmar Contraseña"
+                name={"confirmPassword"}
+                {...{
+                  placeholder: "Confirme su contraseña",
+                }}
+              />
+              {errors.confirmPassword && (
+                <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>
+              )}
+              <ButtonPrimary type="submit">Registrarse</ButtonPrimary>
+            </InputSection>
+            <LinkSection>
+              <span>
+                ¿Ya tienes una cuenta?
+                <LinkStyled to={"/auth/login"}> Ingresar Ahora</LinkStyled>
+              </span>
+            </LinkSection>
+          </form>
+        </FormProvider>
       </Container>
     </>
   );
@@ -85,7 +115,7 @@ const Container = styled.main`
   }
 `;
 
-const Link = styled.a`
+const LinkStyled = styled(Link)`
   color: #00b5e2;
 `;
 
@@ -95,7 +125,6 @@ const InputSection = styled.section`
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
-  gap: 16px;
 `;
 
 const LinkSection = styled.section`

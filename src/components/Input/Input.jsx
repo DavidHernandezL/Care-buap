@@ -20,16 +20,12 @@ const Input = ({ name, label, ...props }) => {
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1rem;
   position: relative;
+  margin-bottom: 1rem;
 `;
 
 const Label = styled.label`
-  display: block;
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
   color: var(--secondaryColor);
   position: absolute;
   top: -1rem;
@@ -38,7 +34,6 @@ const Label = styled.label`
 `;
 
 const InputStyled = styled.input`
-  display: block;
   width: clamp(320px, 100%, 600px);
   padding: 0.5rem;
   border: 1px solid var(--secondaryColor);
