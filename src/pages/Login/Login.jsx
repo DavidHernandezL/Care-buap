@@ -9,15 +9,20 @@ import PwdInput from "../../components/PwdInput/PwdInput";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "../../utils/validationSchemas";
 import ErrorMessage from "@components/ErrorMessage";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
   const {
     formState: { errors },
     ...methods
   } = useForm({ resolver: zodResolver(loginSchema) });
 
-  console.log(errors);
+  const { signIn, errors: loginErrors } = useAuth();
+  const navigate = useNavigate();
   const onSubmit = (data) => {
-    console.log(data);
+    signIn(data);
+    navigate("/profile");
   };
   return (
     <>
@@ -32,6 +37,11 @@ const Login = () => {
             onSubmit={methods.handleSubmit(onSubmit)}
           >
             <InputSection>
+              {loginErrors?.map(
+                (error) => (
+                  console.log(error), (<ErrorMessage>{error.msg}</ErrorMessage>)
+                )
+              )}
               <Input
                 label="Matricula"
                 name={"studentId"}
