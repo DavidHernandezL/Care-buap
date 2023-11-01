@@ -1,6 +1,6 @@
 import { createContext, useState, useContext } from "react";
 import { registerRequest } from "@services/auth";
-import { loginRequest, sessionRequest } from "../services/auth";
+import { loginRequest, logoutRequest, sessionRequest } from "../services/auth";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 export const AuthContext = createContext();
@@ -43,8 +43,8 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const signOut = () => {
-    Cookies.remove();
+  const signOut = async () => {
+    await logoutRequest();
     setUser(null);
     setIsAuthenticated(false);
   };
@@ -89,6 +89,7 @@ export const AuthProvider = ({ children }) => {
         isAuthenticated,
         errors,
         loading,
+        signOut,
       }}
     >
       {children}
