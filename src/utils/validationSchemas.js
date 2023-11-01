@@ -11,7 +11,7 @@ export const loginSchema = z.object({
 export const registerUserSchema = z
   .object({
     fullName: z.string(),
-    studentId: z.string().length(10, "La matricula debe tener 10 dígitos"),
+    studentId: z.string().length(9, "La matricula debe tener 9 dígitos"),
     email: z.string().email("El correo debe ser válido"),
     password: z
       .string()

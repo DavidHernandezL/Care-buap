@@ -6,6 +6,7 @@ import { Routes } from "react-router-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import Profile from "./pages/Profile";
+import PrivateRoutes from "./PrivateRoutes";
 
 function App() {
   return (
@@ -15,8 +16,10 @@ function App() {
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
           <Route path="/auth/recover-password" element={<RecoverPassword />} />
-          <Route path="/auth/reset-password" element={<ResetPassword />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route element={<PrivateRoutes />}>
+            <Route path="/auth/reset-password" element={<ResetPassword />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
           <Route path="*" element={<Login />} />
         </Routes>
       </BrowserRouter>

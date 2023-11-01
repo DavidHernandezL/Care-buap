@@ -11,6 +11,7 @@ import { loginSchema } from "../../utils/validationSchemas";
 import ErrorMessage from "@components/ErrorMessage";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Login = () => {
   const {
@@ -18,12 +19,18 @@ const Login = () => {
     ...methods
   } = useForm({ resolver: zodResolver(loginSchema) });
 
-  const { signIn, errors: loginErrors } = useAuth();
+  const { signIn, errors: loginErrors, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const onSubmit = (data) => {
     signIn(data);
-    navigate("/profile");
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/profile");
+    }
+  }, [isAuthenticated]);
+
   return (
     <>
       <MainHeader
