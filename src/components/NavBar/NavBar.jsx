@@ -14,25 +14,25 @@ const NavBar = () => {
           <ListItems>
             <LinkItem>
               <Heart style={{ fontSize: "1.8rem", lineHeight: "2rem" }} />
-              <Label>Profile</Label>
+              <Label>Perfil</Label>
             </LinkItem>
           </ListItems>
           <ListItems>
-            <LinkItem href="/exercises">
+            <LinkItem to={"/exercises"}>
               <HeartBeat style={{ fontSize: "1.8rem", lineHeight: "2rem" }} />
-              <Label>Exercises</Label>
+              <Label>Ejercicios</Label>
             </LinkItem>
           </ListItems>
           <ListItems>
             <LinkItem href="/diary">
               <Message style={{ fontSize: "1.8rem", lineHeight: "2rem" }} />
-              <Label>Diary</Label>
+              <Label>Diario</Label>
             </LinkItem>
           </ListItems>
           <ListLinks>
             <LinkItem href="/professionals">
               <Contact style={{ fontSize: "1.8rem", lineHeight: "2rem" }} />
-              <Label>Professional</Label>
+              <Label>Profesional</Label>
             </LinkItem>
           </ListLinks>
         </ListLinks>

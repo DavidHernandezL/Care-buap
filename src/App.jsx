@@ -7,6 +7,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import Profile from "./pages/Profile";
 import PrivateRoutes from "./PrivateRoutes";
+import Exercises from "./pages/Exercises";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route path="/auth/reset-password" element={<ResetPassword />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/exercises" element={<Exercises />} />
           </Route>
           <Route path="*" element={<Login />} />
         </Routes>
