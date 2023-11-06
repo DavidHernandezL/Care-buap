@@ -10,7 +10,7 @@ const Profile = () => {
     <>
       <SecondaryHeader title={"Perfil"} subtitle={"Información del usuario"} />
       <UserCard>
-        <img src="/test.jpg" alt="Foto de perfil" />
+        <img src="/unknownImage.png" alt="Foto de perfil" />
         <section>
           <h3>David Hernandez Lopez</h3>
           <p>201929788</p>
