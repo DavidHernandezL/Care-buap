@@ -8,6 +8,8 @@ import { AuthProvider } from "./context/AuthContext";
 import Profile from "./pages/Profile";
 import PrivateRoutes from "./PrivateRoutes";
 import Exercises from "./pages/Exercises";
+import Diary from "./pages/Diary";
+import Professionals from "./pages/Professionals";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route path="/auth/reset-password" element={<ResetPassword />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/exercises" element={<Exercises />} />
+            <Route path="/Diary" element={<Diary />} />
+            <Route path="/Professionals" element={<Professionals />} />
           </Route>
           <Route path="*" element={<Login />} />
         </Routes>

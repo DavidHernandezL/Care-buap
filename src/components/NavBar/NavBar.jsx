@@ -3,16 +3,17 @@ import Heart from "../Icons/Heart";
 import HeartBeat from "../Icons/HeartBeat";
 import Message from "../Icons/Message";
 import Contact from "../Icons/Contact";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
+import { useHref } from "react-router-dom";
 const NavBar = () => {
   return (
     <>
       <Nav>
         <ListLinks>
           <ListItems>
-            <LinkItem>
+            <LinkItem to={"/profile"}>
               <Heart style={{ fontSize: "1.8rem", lineHeight: "2rem" }} />
               <Label>Perfil</Label>
             </LinkItem>
@@ -24,13 +25,13 @@ const NavBar = () => {
             </LinkItem>
           </ListItems>
           <ListItems>
-            <LinkItem href="/diary">
+            <LinkItem to="/diary">
               <Message style={{ fontSize: "1.8rem", lineHeight: "2rem" }} />
               <Label>Diario</Label>
             </LinkItem>
           </ListItems>
           <ListLinks>
-            <LinkItem href="/professionals">
+            <LinkItem to="/professionals">
               <Contact style={{ fontSize: "1.8rem", lineHeight: "2rem" }} />
               <Label>Profesional</Label>
             </LinkItem>
@@ -64,7 +65,7 @@ const ListItems = styled.li`
   width: 4rem;
 `;
 
-const LinkItem = styled(Link)`
+const LinkItem = styled(NavLink)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,7 +75,6 @@ const LinkItem = styled(Link)`
 const Label = styled.span`
   font-size: 1rem;
   line-height: 1rem;
-  color: #66717a;
   font-weight: 600;
   margin-top: 0.5rem;
 `;
