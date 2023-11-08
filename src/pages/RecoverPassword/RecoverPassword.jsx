@@ -5,12 +5,15 @@ import Input from "@components/Input";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { FormProvider, useForm } from "react-hook-form";
 
 const RecoverPassword = () => {
   const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const {
+    formState: { errors },
+    ...methods
+  } = useForm();
+  const onSubmit = () => {
     navigate("/auth/reset-password");
   };
 
@@ -21,18 +24,23 @@ const RecoverPassword = () => {
         subtitle={"Ingrese sus credenciales"}
       />
       <Container>
-        <form style={{ width: "100%" }}>
-          <InputSection>
-            <Input
-              label="Correo Institucional"
-              name={"email"}
-              {...{ placeholder: "nombre@apulno.buap.mx", type: "email" }}
-            />
-            <ButtonPrimary type="submit" onClick={handleSubmit}>
-              Enviar correo de recuperación
-            </ButtonPrimary>
-          </InputSection>
-        </form>
+        <FormProvider {...methods}>
+          <form
+            style={{ width: "100%" }}
+            onSubmit={methods.handleSubmit(onSubmit)}
+          >
+            <InputSection>
+              <Input
+                label="Correo Institucional"
+                name={"email"}
+                {...{ placeholder: "nombre@apulno.buap.mx", type: "email" }}
+              />
+              <ButtonPrimary type="submit">
+                Enviar correo de recuperación
+              </ButtonPrimary>
+            </InputSection>
+          </form>
+        </FormProvider>
       </Container>
     </>
   );
