@@ -29,3 +29,11 @@ export const registerUserSchema = z
       });
     }
   });
+
+export const editSchema = z.object({
+  fullName: z.string(),
+  img: z.object({
+    name: z.string(),
+  }),
+  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
+});

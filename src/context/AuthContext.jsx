@@ -3,6 +3,8 @@ import { registerRequest } from "@services/auth";
 import { loginRequest, logoutRequest, sessionRequest } from "../services/auth";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
+import { upload } from "../pages/ResetPassword/upload";
+import { updateUserRequest } from "../services/user";
 export const AuthContext = createContext();
 
 export const useAuth = () => {
@@ -40,6 +42,31 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
       setErrors(error.response.data.errors);
+    }
+  };
+
+  const updateUser = async ({ file, password, fullName, user }) => {
+    try {
+      let url = user.img;
+      if (file) {
+        console.log("entra");
+        const { data } = await upload({ file: file, userId: user.uid });
+        url = data.url;
+      }
+
+      const newUser = {
+        fullName,
+        password,
+        img: url,
+        uid: user.uid,
+      };
+
+      const { data } = await updateUserRequest(newUser);
+      setUser(data.userUpdate);
+      setIsAuthenticated(true);
+    } catch (error) {
+      console.log(error);
+      setErrors([]);
     }
   };
 
@@ -90,6 +117,7 @@ export const AuthProvider = ({ children }) => {
         errors,
         loading,
         signOut,
+        updateUser,
       }}
     >
       {children}

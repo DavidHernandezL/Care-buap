@@ -128,6 +128,10 @@ const Container = styled.main`
   @media screen and (max-width: 370px) {
     margin-top: 5rem;
   }
+
+  @media screen and (max-height: 700px) and (min-width: 768px) {
+    height: calc(100vh - 200px);
+  }
 `;
 
 const LinkStyled = styled(Link)`

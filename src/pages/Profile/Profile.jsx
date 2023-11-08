@@ -4,22 +4,29 @@ import NavBar from "../../components/NavBar/NavBar";
 import styled from "styled-components";
 import UserEdit from "../../components/Icons/UserEdit";
 import RightLine from "../../components/Icons/RightLine";
+import { useAuth } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
+  const { user } = useAuth();
+  console.log(user);
+  const { fullName, studentId, uid, img } = user;
+  console.log(user);
   return (
     <>
       <SecondaryHeader title={"Perfil"} subtitle={"Información del usuario"} />
-      <UserCard>
-        <img src="/unknownImage.png" alt="Foto de perfil" />
-        <section>
-          <h3>David Hernandez Lopez</h3>
-          <p>201929788</p>
 
-          <button>
+      <UserCard>
+        <img src={img || "/unknownImage.png"} alt="Foto de perfil" />
+        <section>
+          <h3>{fullName}</h3>
+          <p>{studentId}</p>
+
+          <StyledLink to={`/profile/${uid}`}>
             <UserEdit />
             Editar
             <RightLine width={20} height={20} />
-          </button>
+          </StyledLink>
         </section>
       </UserCard>
       <NavBar />
@@ -39,10 +46,12 @@ const UserCard = styled.article`
   background-color: #fff;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
   img {
-    width: 7rem;
-    height: 7rem;
+    width: 8rem;
+    height: 8rem;
     border-radius: 50%;
     margin-bottom: 1rem;
+    object-fit: cover;
+    border: 6px solid #eaeaea;
   }
 
   section {
@@ -61,21 +70,21 @@ const UserCard = styled.article`
       line-height: 14px;
       color: #191919bf;
     }
-
-    button {
-      display: flex;
-      gap: 3px;
-      align-items: center;
-      justify-content: flex-end;
-      vertical-align: middle;
-      width: 100%;
-      padding: 0.8rem;
-      border-radius: 0.5rem;
-      color: #19191966;
-      font-size: 1.2rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
   }
+`;
+
+const StyledLink = styled(Link)`
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  justify-content: flex-end;
+  vertical-align: middle;
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  color: #19191966;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
 `;
 export default Profile;

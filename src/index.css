@@ -45,3 +45,7 @@ input[type="number"] {
 .active {
   color: var(--primaryColor);
 }
+
+input[type="file"]::-webkit-file-upload-button {
+  cursor: pointer;
+}

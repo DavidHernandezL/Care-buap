@@ -10,6 +10,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import Exercises from "./pages/Exercises";
 import Diary from "./pages/Diary";
 import Professionals from "./pages/Professionals";
+import EditProfile from "./pages/EditProfile/EditProfile";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route path="/auth/reset-password" element={<ResetPassword />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:id" element={<EditProfile />} />
             <Route path="/exercises" element={<Exercises />} />
             <Route path="/Diary" element={<Diary />} />
             <Route path="/Professionals" element={<Professionals />} />

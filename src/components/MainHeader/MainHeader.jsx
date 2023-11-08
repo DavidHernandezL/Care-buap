@@ -27,7 +27,7 @@ const MainHeader = ({ title, subtitle, hasIcon }) => {
           <source
             srcSet="/src/assets/logo.svg"
             type="image/svg+xml"
-            media="(min-width: 600px)"
+            media="(min-height: 800px)"
             width={250}
             height={250}
           />
