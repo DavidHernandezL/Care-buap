@@ -20,8 +20,8 @@ function App() {
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
           <Route path="/auth/recover-password" element={<RecoverPassword />} />
+          <Route path="/reset-password/:id" element={<ResetPassword />} />
           <Route element={<PrivateRoutes />}>
-            <Route path="/auth/reset-password" element={<ResetPassword />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/profile/:id" element={<EditProfile />} />
             <Route path="/exercises" element={<Exercises />} />

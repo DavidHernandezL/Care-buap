@@ -5,9 +5,21 @@ import PwdInput from "@components/PwdInput";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { FormProvider, useForm } from "react-hook-form";
+import { resetRequest } from "../../services/auth";
 
 const ResetPassword = () => {
-  const { navigate } = useNavigate();
+  const navigate = useNavigate();
+  const { handleSubmit, ...methods } = useForm();
+
+  const onSubmit = async (data) => {
+    const res = await resetRequest({
+      ...data,
+      id: window.location.pathname.split("/")[2],
+    });
+    console.log(res);
+    navigate("/auth/login");
+  };
   return (
     <>
       <MainHeader
@@ -16,26 +28,23 @@ const ResetPassword = () => {
         hasIcon
       />
       <Container>
-        <form style={{ width: "100%" }}>
-          <InputSection>
-            <PwdInput
-              label="Contraseña"
-              name={"password"}
-              {...{ placeholder: "Ingrese su contraseña" }}
-            />
-            <PwdInput
-              label="Confirme su contraseña"
-              name={"passwordConfirm"}
-              {...{ placeholder: "Confirme su contraseña" }}
-            />
-            <ButtonPrimary
-              type="submit"
-              onClick={() => navigate("/auth/login")}
-            >
-              Cambiar contraseña
-            </ButtonPrimary>
-          </InputSection>
-        </form>
+        <FormProvider {...methods}>
+          <form style={{ width: "100%" }} onSubmit={handleSubmit(onSubmit)}>
+            <InputSection>
+              <PwdInput
+                label="Contraseña"
+                name={"password"}
+                {...{ placeholder: "Ingrese su contraseña" }}
+              />
+              <PwdInput
+                label="Confirme su contraseña"
+                name={"passwordConfirm"}
+                {...{ placeholder: "Confirme su contraseña" }}
+              />
+              <ButtonPrimary type="submit">Cambiar contraseña</ButtonPrimary>
+            </InputSection>
+          </form>
+        </FormProvider>
       </Container>
     </>
   );

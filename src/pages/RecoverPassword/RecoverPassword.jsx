@@ -6,6 +6,7 @@ import ButtonPrimary from "../../components/ButtonPrimary";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
+import { recoveryRequest } from "../../services/auth";
 
 const RecoverPassword = () => {
   const navigate = useNavigate();
@@ -13,7 +14,8 @@ const RecoverPassword = () => {
     formState: { errors },
     ...methods
   } = useForm();
-  const onSubmit = () => {
+  const onSubmit = async (email) => {
+    const res = await recoveryRequest(email);
     navigate("/auth/reset-password");
   };
 
@@ -33,7 +35,7 @@ const RecoverPassword = () => {
               <Input
                 label="Correo Institucional"
                 name={"email"}
-                {...{ placeholder: "nombre@apulno.buap.mx", type: "email" }}
+                {...{ placeholder: "nombre@alumno.buap.mx", type: "email" }}
               />
               <ButtonPrimary type="submit">
                 Enviar correo de recuperación
