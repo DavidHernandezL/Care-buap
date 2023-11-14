@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import LeftArrow from "@components/Icons/LeftArrow";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import LeftArrow from '@components/Icons/LeftArrow';
+import { useNavigate } from 'react-router-dom';
 
 const MainHeader = ({ title, subtitle, hasIcon }) => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const MainHeader = ({ title, subtitle, hasIcon }) => {
         <Aside>
           {hasIcon && (
             <LeftArrow
-              {...{ width: 55, height: 55, color: "#FFF" }}
+              {...{ width: 55, height: 55, color: '#FFF' }}
               onClick={handleBack}
             />
           )}
@@ -25,13 +25,13 @@ const MainHeader = ({ title, subtitle, hasIcon }) => {
         </Aside>
         <picture>
           <source
-            srcSet="/src/assets/logo.svg"
-            type="image/svg+xml"
-            media="(min-height: 800px)"
-            width={250}
-            height={250}
+            srcSet='/src/assets/logo.svg'
+            type='image/svg+xml'
+            media='(min-width: 500px)'
+            width={150}
+            height={150}
           />
-          <img src="/src/assets/logo.svg" alt="Logo" width={150} height={150} />
+          <img src='/src/assets/logo.svg' alt='Logo' width={100} height={100} />
         </picture>
       </Header>
     </>

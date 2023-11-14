@@ -27,10 +27,10 @@ const Login = () => {
           <form style={{ width: '100%' }} onSubmit={methods.handleSubmit(onSubmit)}>
             <InputSection>
               <Input
-                label='Matricula'
+                label='Correo Institucional'
                 name={'studentId'}
                 {...{
-                  placeholder: 'Ingrese su matricula',
+                  placeholder: 'Ingrese su correo institucional',
                   type: 'number',
                   inputMode: 'numeric',
                 }}
@@ -38,11 +38,7 @@ const Login = () => {
               {errors.studentId && (
                 <ErrorMessage>{errors.studentId.message}</ErrorMessage>
               )}
-              <InputPassword
-                label='Contraseña'
-                name={'password'}
-                {...{ placeholder: 'Ingrese su contraseña' }}
-              />
+              <InputPassword label='Contraseña' name={'password'} />
               {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
               <ButtonPrimary type='submit'>Iniciar sesión</ButtonPrimary>
             </InputSection>

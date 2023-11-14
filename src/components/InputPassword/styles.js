@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Show, ShowOff } from '@icons';
 
 const Container = styled.div`
   position: relative;
@@ -33,4 +34,18 @@ const Label = styled.label`
   color: #00b5e2;
 `;
 
-export { Container, Label, TextField };
+const ShowIcon = styled(Show)`
+  position: relative;
+  bottom: -2.5rem;
+  right: -11rem;
+  color: var(--textGray);
+`;
+
+const ShowOffIcon = styled(ShowOff)`
+  position: relative;
+  bottom: -2.5rem;
+  right: -11rem;
+  color: var(--textGray);
+`;
+
+export { Container, Label, TextField, ShowIcon, ShowOffIcon };
