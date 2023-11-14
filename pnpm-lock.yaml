@@ -35,6 +35,9 @@ dependencies:
   react:
     specifier: ^18.2.0
     version: 18.2.0
+  react-auth-kit:
+    specifier: 2.12.7
+    version: 2.12.7(js-cookie@3.0.5)(jwt-decode@3.1.2)(react-dom@18.2.0)(react-router-dom@6.17.0)(react@18.2.0)
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
@@ -1624,6 +1627,10 @@ packages:
       object.values: 1.1.7
     dev: true
 
+  /jwt-decode@3.1.2:
+    resolution: {integrity: sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==}
+    dev: false
+
   /keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
     dependencies:
@@ -1892,6 +1899,23 @@ packages:
   /random-bytes@1.0.0:
     resolution: {integrity: sha512-iv7LhNVO047HzYR3InF6pUcUsPQiHTM1Qal51DcGSuZFBil1aBBWG5eHPNek7bvILMaYJ/8RU1e8w1AMdHmLQQ==}
     engines: {node: '>= 0.8'}
+    dev: false
+
+  /react-auth-kit@2.12.7(js-cookie@3.0.5)(jwt-decode@3.1.2)(react-dom@18.2.0)(react-router-dom@6.17.0)(react@18.2.0):
+    resolution: {integrity: sha512-5yu9AbKl9TNmJ0KfPgLT9SujIx0s2W52aZyiDXWreo9f09zFWzMfcBffX8sgY0r0bZ8VPFt8J94gJFv6R2A1Fw==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      js-cookie: ^3.0.1
+      jwt-decode: ^3.1.2
+      react: '>=16.8.0 || ^17.x || ^18.x'
+      react-dom: '>=16.8.0 || ^17.x || ^18.x'
+      react-router-dom: ^6.2.0
+    dependencies:
+      js-cookie: 3.0.5
+      jwt-decode: 3.1.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-router-dom: 6.17.0(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /react-dom@18.2.0(react@18.2.0):

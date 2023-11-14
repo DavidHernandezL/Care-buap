@@ -1,12 +1,12 @@
-import React from "react";
-import MainHeader from "@components/MainHeader";
-import styled from "styled-components";
-import PwdInput from "@components/PwdInput";
-import ButtonPrimary from "../../components/ButtonPrimary";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { FormProvider, useForm } from "react-hook-form";
-import { resetRequest } from "../../services/auth";
+import React from 'react';
+import MainHeader from '@components/MainHeader';
+import styled from 'styled-components';
+import PwdInput from '@components/InputPassword';
+import ButtonPrimary from '../../components/ButtonPrimary';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { FormProvider, useForm } from 'react-hook-form';
+import { resetRequest } from '../../services/auth';
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -15,33 +15,33 @@ const ResetPassword = () => {
   const onSubmit = async (data) => {
     const res = await resetRequest({
       ...data,
-      id: window.location.pathname.split("/")[2],
+      id: window.location.pathname.split('/')[2],
     });
     console.log(res);
-    navigate("/auth/login");
+    navigate('/auth/login');
   };
   return (
     <>
       <MainHeader
-        title={"Cambiar contraseña"}
-        subtitle={"Ingrese su nueva contraseña"}
+        title={'Cambiar contraseña'}
+        subtitle={'Ingrese su nueva contraseña'}
         hasIcon
       />
       <Container>
         <FormProvider {...methods}>
-          <form style={{ width: "100%" }} onSubmit={handleSubmit(onSubmit)}>
+          <form style={{ width: '100%' }} onSubmit={handleSubmit(onSubmit)}>
             <InputSection>
               <PwdInput
-                label="Contraseña"
-                name={"password"}
-                {...{ placeholder: "Ingrese su contraseña" }}
+                label='Contraseña'
+                name={'password'}
+                {...{ placeholder: 'Ingrese su contraseña' }}
               />
               <PwdInput
-                label="Confirme su contraseña"
-                name={"passwordConfirm"}
-                {...{ placeholder: "Confirme su contraseña" }}
+                label='Confirme su contraseña'
+                name={'passwordConfirm'}
+                {...{ placeholder: 'Confirme su contraseña' }}
               />
-              <ButtonPrimary type="submit">Cambiar contraseña</ButtonPrimary>
+              <ButtonPrimary type='submit'>Cambiar contraseña</ButtonPrimary>
             </InputSection>
           </form>
         </FormProvider>

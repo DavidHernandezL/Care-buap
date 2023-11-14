@@ -1,17 +1,15 @@
-import React from "react";
-import MainHeader from "@components/MainHeader";
-import Input from "@components/Input";
-import ButtonPrimary from "@components/ButtonPrimary";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { useForm, FormProvider } from "react-hook-form";
-import PwdInput from "../../components/PwdInput/PwdInput";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema } from "../../utils/validationSchemas";
-import ErrorMessage from "@components/ErrorMessage";
-import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useForm, FormProvider } from 'react-hook-form';
+
+import Input from '@components/Input';
+import InputPassword from '@components/InputPassword';
+
+import MainHeader from '@components/MainHeader';
+import ButtonPrimary from '@components/ButtonPrimary';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { loginSchema } from '../../utils/validationSchemas';
+import ErrorMessage from '@components/ErrorMessage';
 
 const Login = () => {
   const {
@@ -19,65 +17,42 @@ const Login = () => {
     ...methods
   } = useForm({ resolver: zodResolver(loginSchema) });
 
-  const { signIn, errors: loginErrors, isAuthenticated } = useAuth();
-  const navigate = useNavigate();
-  const onSubmit = (data) => {
-    signIn(data);
-  };
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/profile");
-    }
-  }, [isAuthenticated]);
+  const onSubmit = async (data) => console.log(data);
 
   return (
     <>
-      <MainHeader
-        title={"Inicio de sesión"}
-        subtitle={"Ingrese sus credenciales"}
-      />
+      <MainHeader title={'Inicio de sesión'} subtitle={'Ingrese sus credenciales'} />
       <Container>
         <FormProvider {...methods}>
-          <form
-            style={{ width: "100%" }}
-            onSubmit={methods.handleSubmit(onSubmit)}
-          >
+          <form style={{ width: '100%' }} onSubmit={methods.handleSubmit(onSubmit)}>
             <InputSection>
-              {loginErrors?.map(
-                (error) => (
-                  console.log(error), (<ErrorMessage>{error.msg}</ErrorMessage>)
-                )
-              )}
               <Input
-                label="Matricula"
-                name={"studentId"}
+                label='Matricula'
+                name={'studentId'}
                 {...{
-                  placeholder: "Ingrese su matricula",
-                  type: "number",
-                  inputMode: "numeric",
+                  placeholder: 'Ingrese su matricula',
+                  type: 'number',
+                  inputMode: 'numeric',
                 }}
               />
               {errors.studentId && (
                 <ErrorMessage>{errors.studentId.message}</ErrorMessage>
               )}
-              <PwdInput
-                label="Contraseña"
-                name={"password"}
-                {...{ placeholder: "Ingrese su contraseña" }}
+              <InputPassword
+                label='Contraseña'
+                name={'password'}
+                {...{ placeholder: 'Ingrese su contraseña' }}
               />
-              {errors.password && (
-                <ErrorMessage>{errors.password.message}</ErrorMessage>
-              )}
-              <ButtonPrimary type="submit">Iniciar sesión</ButtonPrimary>
+              {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
+              <ButtonPrimary type='submit'>Iniciar sesión</ButtonPrimary>
             </InputSection>
             <LinkSection>
-              <LinkStyled to={"/auth/recover-password"}>
+              <LinkStyled to={'/auth/recover-password'}>
                 ¿Olvidaste tu contraseña?
               </LinkStyled>
               <span>
                 ¿No tienes una cuenta?
-                <LinkStyled to={"/auth/register"}> Regístrate</LinkStyled>
+                <LinkStyled to={'/auth/register'}> Regístrate</LinkStyled>
               </span>
             </LinkSection>
           </form>

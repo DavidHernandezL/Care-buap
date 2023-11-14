@@ -1,11 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import LeftArrow from "@components/Icons/LeftArrow";
-import Exit from "@components/Icons/Exit";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
-import Input from "@components/Input";
+import React from 'react';
+import styled from 'styled-components';
+import LeftArrow from '@components/Icons/LeftArrow';
+import Exit from '@components/Icons/Exit';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Input from '@components/Input';
 
 const ReturnHeader = ({ title }) => {
   const navigate = useNavigate();
@@ -19,9 +18,9 @@ const ReturnHeader = ({ title }) => {
           {...{
             width: 55,
             height: 55,
-            color: "#FFF",
+            color: '#FFF',
             flex: 0.2,
-            cursor: "pointer",
+            cursor: 'pointer',
           }}
           onClick={handleBack}
         />

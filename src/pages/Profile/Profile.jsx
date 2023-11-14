@@ -1,23 +1,18 @@
-import React from "react";
-import SecondaryHeader from "../../components/SecondaryHeader";
-import NavBar from "../../components/NavBar/NavBar";
-import styled from "styled-components";
-import UserEdit from "../../components/Icons/UserEdit";
-import RightLine from "../../components/Icons/RightLine";
-import { useAuth } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
+import React from 'react';
+import SecondaryHeader from '../../components/SecondaryHeader';
+import NavBar from '../../components/NavBar/NavBar';
+import styled from 'styled-components';
+import UserEdit from '../../components/Icons/UserEdit';
+import RightLine from '../../components/Icons/RightLine';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
-  const { user } = useAuth();
-  console.log(user);
-  const { fullName, studentId, uid, img } = user;
-  console.log(user);
   return (
     <>
-      <SecondaryHeader title={"Perfil"} subtitle={"Información del usuario"} />
+      <SecondaryHeader title={'Perfil'} subtitle={'Información del usuario'} />
 
       <UserCard>
-        <img src={img || "/unknownImage.png"} alt="Foto de perfil" />
+        <img src={img || '/unknownImage.png'} alt='Foto de perfil' />
         <section>
           <h3>{fullName}</h3>
           <p>{studentId}</p>
