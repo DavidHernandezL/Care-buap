@@ -18,6 +18,7 @@ import {
 import { JournalsProvider } from './context/JournalsContext';
 import Journal from './pages/Journal';
 import NavBar from './components/NavBar/NavBar';
+import Journals from './pages/Journals/Journals';
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
             <Route path='*' element={<ErrorPage />} />
             <Route element={<PrivateRoutes />}>
               <Route path='/profile' element={<Profile />} />
-              <Route path='/profile/:id' element={<EditProfile />} />
+              <Route path='/journals/:id' element={<Journals />} />
               <Route path='/exercises' element={<Exercises />} />
               <Route path='/Diary' element={<Diary />} />
               <Route path='/Journals' element={<Journal />} />

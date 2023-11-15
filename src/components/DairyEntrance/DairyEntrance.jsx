@@ -1,16 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-const DairyEntrance = ({ title, date, mood }) => {
+const DairyEntrance = ({ title, date, mood, uid }) => {
   const moods = {
-    regular: "Indiferente",
-    happy: "Feliz",
-    sad: "Triste",
+    regular: 'Indiferente',
+    happy: 'Feliz',
+    sad: 'Triste',
   };
   return (
     <Li>
-      <LinkStyled>ver</LinkStyled>
+      <LinkStyled to={`/journals/${uid}`}>ver</LinkStyled>
       <Header>
         <Title>{title}</Title>
         <Span>
