@@ -16,7 +16,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const { signin, errors: loginErrors } = useAuth();
+  const { signin, errors: loginErrors, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const {
@@ -26,7 +26,6 @@ const Login = () => {
 
   const loginUser = async (data) => {
     signin(data);
-    navigate('/profile');
   };
 
   useEffect(() => {
@@ -34,6 +33,12 @@ const Login = () => {
       toast.error(loginErrors.msg, { duration: 3000 });
     }
   }, [loginErrors]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/profile');
+    }
+  }, [isAuthenticated]);
 
   return (
     <>

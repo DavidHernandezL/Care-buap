@@ -43,3 +43,12 @@ export const editSchema = z.object({
   }),
   password: z.string().min(6, 'La contraseña debe tener al menos 6 caracteres'),
 });
+
+export const createPostSchema = z.object({
+  title: z.string().min(3, 'El título debe tener al menos 3 caracteres'),
+  description: z.string().min(3, 'El contenido debe tener al menos 3 caracteres'),
+  mood: z.string({
+    required_error: 'El estado de ánimo es requerido',
+    invalid_type_error: 'El estado de ánimo es requerido',
+  }),
+});

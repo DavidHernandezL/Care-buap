@@ -1,27 +1,30 @@
-import React from "react";
-import SecondaryHeader from "../../components/SecondaryHeader";
-import NavBar from "../../components/NavBar/NavBar";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import DairyEntrance from "../../components/DairyEntrance";
+import React from 'react';
+import SecondaryHeader from '../../components/SecondaryHeader';
+import NavBar from '../../components/NavBar/NavBar';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import DairyEntrance from '../../components/DairyEntrance';
+import { useJournals } from '../../context/JournalsContext';
+import { useEffect } from 'react';
 
 const Dairy = () => {
+  const { getJournals, journals } = useJournals();
+
+  useEffect(() => {
+    getJournals();
+  }, []);
   return (
     <>
-      <SecondaryHeader title="Diario" />
+      <SecondaryHeader title='Diario' />
       <Main>
         <NotesSection>
           <List>
-            <DairyEntrance title="Nota 1" date="17/10/2023" mood="regular" />
-            <DairyEntrance
-              title="Mis primeras vacaciones"
-              date="17/10/2023"
-              mood="happy"
-            />
-            <DairyEntrance title="Nota 1" date="17/10/2023" mood="sad" />
+            {journals.map((journal) => (
+              <DairyEntrance key={journal.uid} {...journal} />
+            ))}
           </List>
         </NotesSection>
-        <LinkStyled to="/diary/entry">¡Quiero escribir algo nuevo!</LinkStyled>
+        <LinkStyled to='/Journals'>¡Quiero escribir algo nuevo!</LinkStyled>
       </Main>
       <NavBar />
     </>

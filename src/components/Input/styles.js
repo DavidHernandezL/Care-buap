@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   position: relative;
-  max-width: 325px;
+  width: 325px;
 `;
 
 const TextField = styled.input`
