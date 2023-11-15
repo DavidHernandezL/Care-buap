@@ -72,9 +72,15 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const logout = () => {
+    Cookies.remove('token');
+    setUser(null);
+    setIsAuthenticated(false);
+  };
+
   return (
     <AuthContext.Provider
-      value={{ signup, signin, user, isAuthenticated, errors, loading }}
+      value={{ signup, signin, user, isAuthenticated, errors, loading, logout }}
     >
       {children}
     </AuthContext.Provider>

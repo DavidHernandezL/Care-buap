@@ -4,8 +4,10 @@ import LeftArrow from '@components/Icons/LeftArrow';
 import Exit from '@components/Icons/Exit';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const SecondaryHeader = ({ title, subtitle, hasIcon }) => {
+  const { logout } = useAuth();
   return (
     <>
       <Header>
@@ -20,7 +22,7 @@ const SecondaryHeader = ({ title, subtitle, hasIcon }) => {
           <img src='/src/assets/logo_letra.svg' alt='Logo' width={100} height={100} />
         </picture>
         <Title>{title}</Title>
-        <StyledLink onClick={() => signOut()} to='/'>
+        <StyledLink onClick={() => logout()} to='/'>
           <Exit width={50} height={50} color={'#FFF'} />
           <Subtitle>Salir</Subtitle>
         </StyledLink>

@@ -17,6 +17,7 @@ import {
 } from '@pages';
 import { JournalsProvider } from './context/JournalsContext';
 import Journal from './pages/Journal';
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
   return (
