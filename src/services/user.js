@@ -1,2 +1,3 @@
-import axios from "./axios";
-export const updateUserRequest = (user) => axios.put(`/user/${user.uid}`, user);
+import axios from './axios';
+
+export const registerUserRequest = async (user) => axios.post('/users', user);
