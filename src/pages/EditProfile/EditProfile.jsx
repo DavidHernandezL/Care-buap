@@ -13,7 +13,6 @@ import ErrorMessage from '../../components/ErrorMessage';
 import ButtonPrimary from '../../components/ButtonPrimary';
 // import { updateUser } from "../../services/upload";
 import { Cloudinary } from '@cloudinary/url-gen';
-import { upload } from '../ResetPassword/upload';
 import { useState } from 'react';
 import ImgInput from '../../components/InputImage';
 

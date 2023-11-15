@@ -6,18 +6,12 @@ import ButtonPrimary from '../../components/ButtonPrimary';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
-import { resetRequest } from '../../services/auth';
 
 const ResetPassword = () => {
   const navigate = useNavigate();
   const { handleSubmit, ...methods } = useForm();
 
   const onSubmit = async (data) => {
-    const res = await resetRequest({
-      ...data,
-      id: window.location.pathname.split('/')[2],
-    });
-    console.log(res);
     navigate('/auth/login');
   };
   return (

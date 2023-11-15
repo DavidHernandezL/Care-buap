@@ -4,11 +4,12 @@ import { Show, ShowOff } from '@icons';
 const Container = styled.div`
   position: relative;
   max-width: 325px;
+  max-height: 75px;
 `;
 
 const TextField = styled.input`
   width: 100%;
-  padding: 0.7rem 1rem;
+  padding: 0.6rem 1rem;
   border: 1px solid #ccc;
   border-radius: 15px;
   outline: none;
@@ -26,7 +27,7 @@ const TextField = styled.input`
 
 const Label = styled.label`
   position: relative;
-  top: 10px;
+  top: -60px;
   left: 20px;
   font-size: 1.1rem;
   background-color: #fff;
@@ -36,15 +37,15 @@ const Label = styled.label`
 
 const ShowIcon = styled(Show)`
   position: relative;
-  bottom: -2.5rem;
-  right: -11rem;
+  bottom: -2.4rem;
+  left: 18rem;
   color: var(--textGray);
 `;
 
 const ShowOffIcon = styled(ShowOff)`
   position: relative;
-  bottom: -2.5rem;
-  right: -11rem;
+  bottom: -2.4rem;
+  left: 18rem;
   color: var(--textGray);
 `;
 

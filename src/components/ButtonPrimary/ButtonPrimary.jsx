@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const ButtonPrimary = ({ children, type, ...props }) => {
   return (
@@ -11,17 +11,17 @@ const ButtonPrimary = ({ children, type, ...props }) => {
 
 const Button = styled.button`
   display: block;
-  width: 320px;
+  width: 325px;
   padding: 0.5rem;
+  margin-top: 1rem;
   border: 1px solid var(--secondaryColor);
-  background-color: var(--secondaryColor);
+  background-color: #00b5e2cc;
   border-radius: 1rem;
   font-size: 1.2rem;
   color: var(--white);
 
   &:hover {
-    color: var(--primaryColor);
-    background-color: var(--hoverSecondaryColor);
+    background-color: #109dc0;
   }
 
   &:focus {

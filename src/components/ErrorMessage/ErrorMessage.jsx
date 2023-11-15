@@ -18,7 +18,7 @@ const Message = styled.span`
   font-size: 0.9rem;
   border: 1px solid red;
   padding: 0.5rem 0.8rem;
-  background-color: #ffd2c2;
+  background-color: #ffd2c296;
   display: flex;
   align-items: center;
   gap: 0.2rem;

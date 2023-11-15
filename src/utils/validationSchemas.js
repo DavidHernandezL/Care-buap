@@ -1,33 +1,39 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const loginSchema = z.object({
   studentId: z
-    .string()
-    .length(9, "La matricula debe tener 9 dígitos")
-    .regex(/^\d+$/, "La matricula debe ser un número"),
-  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
+    .number({
+      invalid_type_error: 'La matricula es requerida',
+    })
+    .min(100000000, 'La matricula debe tener 9 dígitos'),
+  password: z.string().min(6, 'La contraseña debe tener al menos 6 caracteres'),
 });
 
 export const registerUserSchema = z
   .object({
-    fullName: z.string(),
-    studentId: z.string().length(9, "La matricula debe tener 9 dígitos"),
-    email: z.string().email("El correo debe ser válido"),
-    password: z
+    fullName: z
       .string()
-      .min(6, "La contraseña debe tener al menos 6 caracteres"),
-    confirmPassword: z
-      .string()
-      .min(6, "La contraseña debe tener al menos 6 caracteres"),
+      .min(3, 'El nombre debe tener al menos 3 caracteres')
+      .regex(/^[a-zA-Z\s]*$/, {
+        message: 'El nombre solo puede contener letras',
+      })
+      .refine((value) => {
+        return value.split(' ').length >= 2;
+      }, 'El nombre debe tener al menos 2 palabras'),
+    studentId: z
+      .number({
+        invalid_type_error: 'La matricula es requerida',
+      })
+      .min(100000000, 'La matricula debe tener 9 dígitos'),
+    email: z.string().email('El correo debe ser válido').includes('@alumno.buap.mx', {
+      message: 'El correo debe ser institucional',
+    }),
+    password: z.string().min(6, 'La contraseña debe tener al menos 6 caracteres'),
+    confirmPassword: z.string().min(6, 'La contraseña debe tener al menos 6 caracteres'),
   })
-  .superRefine(({ confirmPassword, password }, ctx) => {
-    if (confirmPassword !== password) {
-      ctx.addIssue({
-        code: "custom",
-        message: "Las contraseñas no coinciden",
-        path: ["confirmPassword"],
-      });
-    }
+  .refine((values) => values.password === values.confirmPassword, {
+    message: 'Las contraseñas no coinciden',
+    path: ['confirmPassword'],
   });
 
 export const editSchema = z.object({
@@ -35,5 +41,5 @@ export const editSchema = z.object({
   img: z.object({
     name: z.string(),
   }),
-  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
+  password: z.string().min(6, 'La contraseña debe tener al menos 6 caracteres'),
 });

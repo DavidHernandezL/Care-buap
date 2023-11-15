@@ -1,12 +1,11 @@
-import React from "react";
-import MainHeader from "@components/MainHeader";
-import styled from "styled-components";
-import Input from "@components/Input";
-import ButtonPrimary from "../../components/ButtonPrimary";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { FormProvider, useForm } from "react-hook-form";
-import { recoveryRequest } from "../../services/auth";
+import React from 'react';
+import MainHeader from '@components/MainHeader';
+import styled from 'styled-components';
+import Input from '@components/Input';
+import ButtonPrimary from '../../components/ButtonPrimary';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { FormProvider, useForm } from 'react-hook-form';
 
 const RecoverPassword = () => {
   const navigate = useNavigate();
@@ -15,31 +14,26 @@ const RecoverPassword = () => {
     ...methods
   } = useForm();
   const onSubmit = async (email) => {
-    const res = await recoveryRequest(email);
-    navigate("/auth/reset-password");
+    navigate('/auth/reset-password');
   };
 
   return (
     <>
       <MainHeader
-        title={"Recuperar contraseña"}
-        subtitle={"Ingrese sus credenciales"}
+        title={'Recuperar contraseña'}
+        subtitle={'Ingrese sus credenciales'}
+        hasIcon
       />
       <Container>
         <FormProvider {...methods}>
-          <form
-            style={{ width: "100%" }}
-            onSubmit={methods.handleSubmit(onSubmit)}
-          >
+          <form style={{ width: '100%' }} onSubmit={methods.handleSubmit(onSubmit)}>
             <InputSection>
               <Input
-                label="Correo Institucional"
-                name={"email"}
-                {...{ placeholder: "nombre@alumno.buap.mx", type: "email" }}
+                label='Correo Institucional'
+                name={'email'}
+                {...{ placeholder: 'nombre@alumno.buap.mx', type: 'email' }}
               />
-              <ButtonPrimary type="submit">
-                Enviar correo de recuperación
-              </ButtonPrimary>
+              <ButtonPrimary type='submit'>Enviar correo de recuperación</ButtonPrimary>
             </InputSection>
           </form>
         </FormProvider>

@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { Container, Label, TextField, ShowIcon, ShowOffIcon } from './styles';
 import { useFormContext } from 'react-hook-form';
 
-const InputPassword = ({ name, label, ...props }) => {
+const InputPassword = ({ name, label }) => {
   const [showPassword, setShowPassword] = useState(false);
   const { register } = useFormContext();
 
   return (
     <Container>
-      <Label htmlFor={name}>{label}</Label>
       {showPassword ? (
         <ShowOffIcon
           onClick={() => setShowPassword(!showPassword)}
@@ -25,6 +24,7 @@ const InputPassword = ({ name, label, ...props }) => {
         type={showPassword ? 'text' : 'password'}
         {...register(name)}
       />
+      <Label htmlFor={name}>{label}</Label>
     </Container>
   );
 };
