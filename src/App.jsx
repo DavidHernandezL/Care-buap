@@ -1,6 +1,7 @@
 import { Routes } from 'react-router-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 
+import { AuthProvider } from './context/AuthContext';
 import PrivateRoutes from './PrivateRoutes';
 import {
   Login,
@@ -17,23 +18,25 @@ import {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='/auth/login' element={<Login />} />
-        <Route path='/auth/register' element={<Register />} />
-        <Route path='/forgot-password' element={<RecoverPassword />} />
-        <Route path='/reset-password/:id' element={<ResetPassword />} />
-        <Route element={<PrivateRoutes />}>
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/profile/:id' element={<EditProfile />} />
-          <Route path='/exercises' element={<Exercises />} />
-          <Route path='/Diary' element={<Diary />} />
-          <Route path='/Professionals' element={<Professionals />} />
-        </Route>
-        <Route path='*' element={<ErrorPage />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Login />} />
+          <Route path='/auth/login' element={<Login />} />
+          <Route path='/auth/register' element={<Register />} />
+          <Route path='/forgot-password' element={<RecoverPassword />} />
+          <Route path='/reset-password/:id' element={<ResetPassword />} />
+          <Route path='*' element={<ErrorPage />} />
+          <Route element={<PrivateRoutes />}>
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/profile/:id' element={<EditProfile />} />
+            <Route path='/exercises' element={<Exercises />} />
+            <Route path='/Diary' element={<Diary />} />
+            <Route path='/Professionals' element={<Professionals />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

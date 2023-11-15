@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Toaster } from 'sonner';
 import LeftArrow from '@components/Icons/LeftArrow';
 import { useNavigate } from 'react-router-dom';
 
@@ -33,6 +34,7 @@ const MainHeader = ({ title, subtitle, hasIcon }) => {
           />
           <img src='/src/assets/logo.svg' alt='Logo' width={100} height={100} />
         </picture>
+        <Toaster richColors position='top-center' visibleToasts={1} />
       </Header>
     </>
   );

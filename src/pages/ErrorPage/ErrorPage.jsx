@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ErrorPageWrapper = styled.div`
@@ -32,13 +33,12 @@ const BackButton = styled.button`
 `;
 
 const ErrorPage = () => {
+  const navigate = useNavigate();
   return (
     <ErrorPageWrapper>
       <ErrorTitle>Error 404</ErrorTitle>
       <ErrorDescription>La página que buscas no existe.</ErrorDescription>
-      <BackButton onClick={() => window.history.back()}>
-        Volver a la página principal
-      </BackButton>
+      <BackButton onClick={() => navigate('/')}>Volver a la página principal</BackButton>
     </ErrorPageWrapper>
   );
 };

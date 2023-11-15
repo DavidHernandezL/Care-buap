@@ -1,4 +1,7 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
+import { toast } from 'sonner';
 
 import ButtonPrimary from '../../components/ButtonPrimary';
 import ErrorMessage from '@components/ErrorMessage';
@@ -10,20 +13,33 @@ import { Container, Form, LinkStyled } from './styles';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerUserSchema } from '@utils/validationSchemas';
 
-import { registerUserRequest } from '@services/user';
+import { useAuth } from '../../context/AuthContext';
 
 const Register = () => {
+  const { signup, isAuthenticated, errors: registerErrors } = useAuth();
+  const navigate = useNavigate();
+
   const {
     formState: { errors },
     ...methods
   } = useForm({ resolver: zodResolver(registerUserSchema) });
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/profile');
+    }
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    if (registerErrors) {
+      toast.error(registerErrors, { duration: 3000 });
+    }
+  }, [registerErrors]);
+
   const registerUser = async (data) => {
-    const response = await registerUserRequest(data);
-    console.log(response);
+    signup(data);
   };
 
-  console.log(errors);
   return (
     <>
       <MainHeader title={'Registro'} subtitle={'Ingrese sus datos'} hasIcon />

@@ -12,12 +12,12 @@ const Profile = () => {
       <SecondaryHeader title={'Perfil'} subtitle={'Información del usuario'} />
 
       <UserCard>
-        <img src={img || '/unknownImage.png'} alt='Foto de perfil' />
+        <img src={'/no-image.png'} alt='Foto de perfil' />
         <section>
-          <h3>{fullName}</h3>
-          <p>{studentId}</p>
+          <h3>David Hernandez</h3>
+          <p>201929788</p>
 
-          <StyledLink to={`/profile/${uid}`}>
+          <StyledLink to={`/profile/123`}>
             <UserEdit />
             Editar
             <RightLine width={20} height={20} />

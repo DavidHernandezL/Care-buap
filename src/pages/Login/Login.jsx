@@ -1,5 +1,6 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from 'sonner';
 
 import ButtonPrimary from '@components/ButtonPrimary';
 import ErrorMessage from '@components/ErrorMessage';
@@ -10,22 +11,36 @@ import MainHeader from '@components/MainHeader';
 import { loginSchema } from '@utils/validationSchemas';
 import { Container, Form, LinkStyled } from './styles';
 
+import { useAuth } from '../../context/AuthContext';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
+  const { signin, errors: loginErrors } = useAuth();
+  const navigate = useNavigate();
+
   const {
     formState: { errors },
     ...methods
   } = useForm({ resolver: zodResolver(loginSchema) });
 
-  const onSubmit = async (data) => console.log(data);
+  const loginUser = async (data) => {
+    signin(data);
+    navigate('/profile');
+  };
 
-  console.log(errors);
+  useEffect(() => {
+    if (loginErrors) {
+      toast.error(loginErrors.msg, { duration: 3000 });
+    }
+  }, [loginErrors]);
 
   return (
     <>
       <MainHeader title={'Inicio de sesión'} subtitle={'Ingrese sus credenciales'} />
       <Container>
         <FormProvider {...methods}>
-          <Form style={{ width: '100%' }} onSubmit={methods.handleSubmit(onSubmit)}>
+          <Form style={{ width: '100%' }} onSubmit={methods.handleSubmit(loginUser)}>
             <Input
               label='Matricula'
               name={'studentId'}

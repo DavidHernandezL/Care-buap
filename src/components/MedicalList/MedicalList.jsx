@@ -1,19 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const MedicalList = () => {
   return (
-    <ul style={{ listStyle: "none" }}>
+    <ul style={{ listStyle: 'none' }}>
       <li>
         <LinkStyled>
-          <img src="/unknownImage.png" alt="Foto de perfil" />
+          <img src='/no-image.png' alt='Foto de perfil' />
           <h2>Dr. Juan Perez</h2>
         </LinkStyled>
       </li>
       <li>
         <LinkStyled>
-          <img src="/unknownImage.png" alt="Foto de perfil" />
+          <img src='/no-image.png' alt='Foto de perfil' />
           <h2>Dra. Natalia </h2>
         </LinkStyled>
       </li>
