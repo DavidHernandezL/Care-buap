@@ -18,20 +18,34 @@ import InputArea from '../../components/InputArea';
 import InputMood from '../../components/InputMood';
 import { createPostSchema } from '../../utils/validationSchemas';
 import { useJournals } from '../../context/JournalsContext';
+import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 
 const Journal = () => {
   const { errors: journalErrors } = useAuth();
-  const { createJournal } = useJournals();
+  const { createJournal, updateJournal } = useJournals();
   const navigate = useNavigate();
+  const [journal, setJournal] = useState({});
+  const { getJournal } = useJournals();
+  const params = useParams();
+  const { id } = params;
 
   const {
     formState: { errors },
+    setValue,
     ...methods
   } = useForm({ resolver: zodResolver(createPostSchema) });
 
   const journalSubmit = async (data) => {
-    const res = await createJournal(data);
-    navigate('/diary');
+    try {
+      if (id) {
+        const res = await updateJournal(id, data);
+        navigate('/diary');
+      } else {
+        const res = await createJournal(data);
+        navigate('/diary');
+      }
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -39,6 +53,19 @@ const Journal = () => {
       toast.error(journalErrors.msg, { duration: 3000 });
     }
   }, [journalErrors]);
+
+  useEffect(() => {
+    const getJournalById = async () => {
+      const journal = await getJournal(id);
+      setJournal(journal);
+      setValue('title', journal.title);
+      setValue('mood', journal.mood);
+      setValue('description', journal.description);
+    };
+    if (id) {
+      getJournalById();
+    }
+  }, []);
 
   return (
     <>
@@ -48,12 +75,12 @@ const Journal = () => {
         <FormProvider {...methods}>
           <Form style={{ width: '100%' }} onSubmit={methods.handleSubmit(journalSubmit)}>
             <DateStyled>
-              Fecha:{' '}
-              {new Date().toLocaleString('es-MX', {
-                day: 'numeric',
-                month: 'numeric',
-                year: 'numeric',
-              })}
+              Fecha de creación:{' '}
+              {journal.date ? (
+                journal.date
+              ) : (
+                <span style={{ color: 'red' }}>No se pudo obtener la fecha</span>
+              )}
             </DateStyled>
             <Input
               label='Titulo'
@@ -74,7 +101,7 @@ const Journal = () => {
               <ErrorMessage>{errors.description.message}</ErrorMessage>
             )}
             <ButtonPrimary type='submit' {...{ style: { backgroundColor: '#003B5C' } }}>
-              Publicar
+              {id ? 'Editar' : 'Publicar'}
             </ButtonPrimary>
           </Form>
         </FormProvider>

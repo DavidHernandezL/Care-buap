@@ -4,6 +4,7 @@ import {
   getJournalRequest,
   createJournalRequest,
   getJournalByIdRequest,
+  updateJournalRequest,
 } from '../services/journal';
 import { useState } from 'react';
 
@@ -36,6 +37,11 @@ export const JournalsProvider = ({ children }) => {
     return res.data;
   };
 
+  const updateJournal = async (id, journal) => {
+    const { data: res } = await updateJournalRequest(id, journal);
+    return res.data;
+  };
+
   return (
     <JournalsContext.Provider
       value={{
@@ -43,6 +49,7 @@ export const JournalsProvider = ({ children }) => {
         getJournals,
         createJournal,
         getJournal,
+        updateJournal,
       }}
     >
       {children}
