@@ -19,6 +19,7 @@ import { JournalsProvider } from './context/JournalsContext';
 import Journal from './pages/Journal';
 import NavBar from './components/NavBar/NavBar';
 import Journals from './pages/Journals/Journals';
+import MedicalProfile from './pages/MedicalProfile';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
               <Route path='/Diary/:id' element={<Journal />} />
               <Route path='/Journals' element={<Journal />} />
               <Route path='/Professionals' element={<Professionals />} />
+              <Route path='/Professionals/:type/:id' element={<MedicalProfile />} />
             </Route>
           </Routes>
         </BrowserRouter>

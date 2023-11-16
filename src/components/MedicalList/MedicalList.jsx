@@ -1,42 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import MedicalCard from '../MedicalCard/MedicalCard';
 
-const MedicalList = () => {
+const MedicalList = ({ professionals }) => {
   return (
-    <ul style={{ listStyle: 'none' }}>
-      <li>
-        <LinkStyled>
-          <img src='/no-image.png' alt='Foto de perfil' />
-          <h2>Dr. Juan Perez</h2>
-        </LinkStyled>
-      </li>
-      <li>
-        <LinkStyled>
-          <img src='/no-image.png' alt='Foto de perfil' />
-          <h2>Dra. Natalia </h2>
-        </LinkStyled>
-      </li>
-    </ul>
+    <List style={{ listStyle: 'none' }}>
+      {professionals.map((professional) => {
+        return (
+          <li key={professional.id}>
+            <Link to={`/Professionals/${professional.type}/${professional.id}`}>
+              <MedicalCard professional={professional} />
+            </Link>
+          </li>
+        );
+      })}
+    </List>
   );
 };
 
-const LinkStyled = styled(Link)`
+const List = styled.ul`
   display: flex;
-  align-items: center;
-  gap: 25px;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(25, 25, 25, 0.9);
-  padding: 1rem;
-  border-radius: 1rem;
-  margin: 1rem;
-
-  img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 export default MedicalList;
