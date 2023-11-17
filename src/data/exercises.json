@@ -115,24 +115,36 @@
     "description": "La música relajante puede ayudar a reducir el estrés, la ansiedad y la depresión. También puede ayudar a mejorar el estado de ánimo y la concentración.",
     "songs": [
       {
-        "title": "Música de piano relajante",
-        "url": "https://p.scdn.co/mp3-preview/1d53b96abb564f9ba08427c3c5361dd8fbe72f7d?cid=d8a5ed958d274c2e8ee717e6a4b0971d"
+        "title": "Dreamland",
+        "url": "/src/assets/music/Dreamland - Aakash Gandhi.mp3"
       },
       {
-        "title": "Música de la naturaleza relajante",
-        "url": "https://open.spotify.com/playlist/37i9dQZF1DX085tZ45m8rP"
+        "title": "Lullaby",
+        "url": "/src/assets/music/Lullaby - JVNA.mp3"
       },
       {
-        "title": "Música de meditación relajante",
-        "url": "https://open.spotify.com/playlist/37i9dQZF1DX5a7r5922q0D"
+        "title": "Til Death Parts Us",
+        "url": "/src/assets/music/Til Death Parts Us - Aakash Gandhi.mp3"
       },
       {
-        "title": "Música de spa relajante",
-        "url": "https://open.spotify.com/playlist/37i9dQZF1DX5t6r855417d"
+        "title": "Come With Us",
+        "url": "/src/assets/music/Come With Us - Nat Keefe & Hot Buttered Rum.mp3"
       },
       {
-        "title": "Música de yoga relajante",
-        "url": "https://open.spotify.com/playlist/37i9dQZF1DX56487z4k3v2"
+        "title": "Campfire",
+        "url": "/src/assets/music/Campfire - Telecasted.mp3"
+      },
+      {
+        "title": "First Dream",
+        "url": "/src/assets/music/First Dream - Brian Bolger.mp3"
+      },
+      {
+        "title": "Somnia I",
+        "url": "/src/assets/music/Somnia I - Reed Mathis.mp3"
+      },
+      {
+        "title": "Til Death Parts Us",
+        "url": "/src/assets/music/Til Death Parts Us - Aakash Gandhi.mp3"
       }
     ]
   }
