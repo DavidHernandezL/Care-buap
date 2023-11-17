@@ -32,7 +32,7 @@
       "type": "psychiatrists",
       "picture": "https://s3.us-east-1.amazonaws.com/doctoralia.com.mx/doctor/9489c1/9489c19c512a3637c05eb60d7c1135dd_large.jpg",
       "page": "https://www.doctoralia.com.mx/guillermo-antonio-lima-zarate/psiquiatra/puebla#address-id=%5B438916%5D&filters%5Bspecializations%5D%5B%5D=80",
-      "address": ""
+      "address": "Calle 39 Oriente 1010, Anzures, Puebla"
     },
     {
       "id": "ps2",
@@ -40,7 +40,7 @@
       "type": "psychiatrists",
       "picture": "https://s3.us-east-1.amazonaws.com/doctoralia.com.mx/doctor/4d53f4/4d53f447e0c4984048ff13af9c000192_large.jpg",
       "page": "https://www.doctoralia.com.mx/arturo-chavez-flores-2/psiquiatra/puebla#address-id=%5B445683%2C448435%5D&filters%5Bspecializations%5D%5B%5D=80",
-      "address": ""
+      "address": "AV. KEPLER 2143/110, Puebla"
     },
     {
       "id": "ps3",
@@ -48,7 +48,7 @@
       "type": "psychiatrists",
       "picture": "https://s3.us-east-1.amazonaws.com/doctoralia.com.mx/doctor/3cd9d3/3cd9d3be3e82d6d71bc75ec7b9611b93_large.jpg",
       "page": "https://www.doctoralia.com.mx/elizabeth-marquez-ochoa/psiquiatra/puebla#address-id=%5B63837%2C85414%2C341139%5D&filters%5Bspecializations%5D%5B%5D=80",
-      "address": ""
+      "address": "Camino al Batán 5718 - 220, Calera Plaza, Puebla"
     }
   ],
   "neurologists": [
@@ -58,7 +58,7 @@
       "type": "neurologists",
       "picture": "https://s3.us-east-1.amazonaws.com/doctoralia.com.mx/doctor/765832/7658322a16522b82fd57a4b283eac98c_large.jpg",
       "page": "https://www.doctoralia.com.mx/alicia-garmendia-rebolledo/neurologo/puebla#address-id=%5B404671%5D&filters%5Bspecializations%5D%5B%5D=58",
-      "address": ""
+      "address": "Calle 20 Sur, Puebla"
     },
     {
       "id": "n2",
@@ -66,7 +66,7 @@
       "type": "neurologists",
       "picture": "https://s3.us-east-1.amazonaws.com/doctoralia.com.mx/doctor/d4d5d1/d4d5d137464ab62ec546b145772425af_large.jpg",
       "page": "https://www.doctoralia.com.mx/edgar-e-gonzalez-f/neurologo/puebla#address-id=%5B407888%5D&filters%5Bspecializations%5D%5B%5D=58",
-      "address": ""
+      "address": "Av 11 Ote 1828-Int 502, Azcarate, Puebla"
     },
     {
       "id": "n3",
@@ -74,7 +74,7 @@
       "type": "neurologists",
       "picture": "https://s3.us-east-1.amazonaws.com/doctoralia.com.mx/doctor/de9d03/de9d033f820d6d55bee1f0bd83b9ff77_large.jpg",
       "page": "https://www.doctoralia.com.mx/yadira-tiburcio-nunez/neurologo/puebla#address-id=%5B424318%2C429443%2C424323%5D&filters%5Bspecializations%5D%5B%5D=58",
-      "address": ""
+      "address": "Avenida Kepler 2143, La Noria, Puebla"
     }
   ]
 }

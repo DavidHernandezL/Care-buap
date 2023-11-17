@@ -1,15 +1,14 @@
 import ReturnHeader from '../../components/ReturnHeader/ReturnHeader';
-import ButtonPrimary from '../../components/ButtonPrimary/ButtonPrimary';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
-import doctors from '../../data/psychologist.json';
+import doctors from '../../data/doctors.json';
 import { Link } from 'react-router-dom';
 
 const MedicalProfile = () => {
   const profession = {
     psychologist: 'Psicólogo',
-    psychiatrist: 'Psiquiatra',
-    neurologist: 'Neurólogo',
+    psychiatrists: 'Psiquiatra',
+    neurologists: 'Neurólogo',
   };
   const { id, type } = useParams();
   const professional = doctors[type].find((doctor) => doctor.id === id);

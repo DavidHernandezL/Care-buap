@@ -3,7 +3,7 @@ import SecondaryHeader from '../../components/SecondaryHeader';
 import NavBar from '../../components/NavBar/NavBar';
 import MedicalList from '../../components/MedicalList';
 import styled from 'styled-components';
-import doctors from '../../data/psychologist.json';
+import doctors from '../../data/doctors.json';
 const Professionals = () => {
   const { psychologist, psychiatrists, neurologists } = doctors;
   return (
