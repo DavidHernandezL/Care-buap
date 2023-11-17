@@ -76,11 +76,13 @@ const Journal = () => {
           <Form style={{ width: '100%' }} onSubmit={methods.handleSubmit(journalSubmit)}>
             <DateStyled>
               Fecha de creación:{' '}
-              {journal.date ? (
-                journal.date
-              ) : (
-                <span style={{ color: 'red' }}>No se pudo obtener la fecha</span>
-              )}
+              {journal.date
+                ? journal.date
+                : new Date().toLocaleDateString('es-ES', {
+                    year: 'numeric',
+                    month: 'numeric',
+                    day: 'numeric',
+                  })}
             </DateStyled>
             <Input
               label='Titulo'

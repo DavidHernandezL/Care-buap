@@ -2,26 +2,22 @@ import React from 'react';
 import SecondaryHeader from '../../components/SecondaryHeader';
 import NavBar from '../../components/NavBar/NavBar';
 import styled from 'styled-components';
-import UserEdit from '../../components/Icons/UserEdit';
-import RightLine from '../../components/Icons/RightLine';
-import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const Profile = () => {
+  const { user } = useAuth();
   return (
     <>
       <SecondaryHeader title={'Perfil'} subtitle={'Información del usuario'} />
 
       <UserCard>
-        <img src={'/no-image.png'} alt='Foto de perfil' />
+        <img
+          src={`https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${user.fullName}`}
+          alt='Foto de perfil'
+        />
         <section>
-          <h3>David Hernandez</h3>
-          <p>201929788</p>
-
-          <StyledLink to={`/profile/123`}>
-            <UserEdit />
-            Editar
-            <RightLine width={20} height={20} />
-          </StyledLink>
+          <h3>{user.fullName}</h3>
+          <p>{user.studentId}</p>
         </section>
       </UserCard>
       <NavBar />
@@ -51,7 +47,7 @@ const UserCard = styled.article`
 
   section {
     h3 {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
       line-height: 20px;
@@ -59,27 +55,12 @@ const UserCard = styled.article`
     }
 
     p {
-      font-size: 1rem;
+      font-size: 1.3rem;
       font-weight: 400;
       margin-bottom: 0.5rem;
       line-height: 14px;
       color: #191919bf;
     }
   }
-`;
-
-const StyledLink = styled(Link)`
-  display: flex;
-  gap: 3px;
-  align-items: center;
-  justify-content: flex-end;
-  vertical-align: middle;
-  width: 100%;
-  padding: 0.8rem;
-  border-radius: 0.5rem;
-  color: #19191966;
-  font-size: 1.2rem;
-  font-weight: 700;
-  cursor: pointer;
 `;
 export default Profile;
