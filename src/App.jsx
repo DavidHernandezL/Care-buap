@@ -20,6 +20,7 @@ import Journal from './pages/Journal';
 import NavBar from './components/NavBar/NavBar';
 import Journals from './pages/Journals/Journals';
 import MedicalProfile from './pages/MedicalProfile';
+import Exercise from './pages/Exercise/Exercise';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
               <Route path='/profile' element={<Profile />} />
               <Route path='/journals/:id' element={<Journals />} />
               <Route path='/exercises' element={<Exercises />} />
+              <Route path='/exercises/:id' element={<Exercise />} />
               <Route path='/Diary' element={<Diary />} />
               <Route path='/Diary/:id' element={<Journal />} />
               <Route path='/Journals' element={<Journal />} />

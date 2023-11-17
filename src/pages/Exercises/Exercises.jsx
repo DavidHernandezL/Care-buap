@@ -1,36 +1,36 @@
-import React from "react";
-import SecondaryHeader from "../../components/SecondaryHeader";
-import NavBar from "../../components/NavBar/NavBar";
-import RightLine from "../../components/Icons/RightLine";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React from 'react';
+import SecondaryHeader from '../../components/SecondaryHeader';
+import NavBar from '../../components/NavBar/NavBar';
+import RightLine from '../../components/Icons/RightLine';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Exercises = () => {
   return (
     <>
-      <SecondaryHeader title={"Ejercicios"} subtitle={"Lista de ejercicios"} />
+      <SecondaryHeader title={'Ejercicios'} subtitle={'Lista de ejercicios'} />
       <main>
         <List>
           <ListItem>
-            <Image src="/src/assets/Respiration.svg" alt="" />
+            <Image src='/src/assets/Respiration.svg' alt='' />
             <Paragraph>Ejercicios de respiración</Paragraph>
-            <Link>
+            <Link to='/exercises/respiration'>
               <RightLine width={30} height={30} />
             </Link>
           </ListItem>
 
           <ListItem>
-            <Image src="/src/assets/Motivation.svg" alt="" />
+            <Image src='/src/assets/Motivation.svg' alt='' />
             <Paragraph>Ejercicios de motivación</Paragraph>
-            <Link>
+            <Link to='/exercises/motivation'>
               <RightLine width={30} height={30} />
             </Link>
           </ListItem>
 
           <ListItem>
-            <Image src="/src/assets/Relax.svg" alt="" />
+            <Image src='/src/assets/Relax.svg' alt='' />
             <Paragraph>Música relajante</Paragraph>
-            <Link>
+            <Link to='/exercises/music'>
               <RightLine width={30} height={30} />
             </Link>
           </ListItem>
