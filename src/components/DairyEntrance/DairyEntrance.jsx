@@ -14,7 +14,7 @@ const DairyEntrance = ({ title, date, mood, uid }) => {
       <Header>
         <Title>{title}</Title>
         <Span>
-          <img src={`/src/assets/${mood}.svg`} alt={mood} />
+          <img src={`/assets/${mood}.svg`} alt={mood} />
           {moods[mood]}
         </Span>
       </Header>

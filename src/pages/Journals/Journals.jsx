@@ -35,7 +35,7 @@ const Journals = () => {
         </Header>
         <Section>
           <Mood>
-            <img src={`/src/assets/${journal.mood}.svg`} alt='' />
+            <img src={`/assets/${journal.mood}.svg`} alt='' />
             <Text>{moods[journal.mood]}</Text>
           </Mood>
           <Description>{journal.description}</Description>

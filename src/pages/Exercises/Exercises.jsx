@@ -12,7 +12,7 @@ const Exercises = () => {
       <main>
         <List>
           <ListItem>
-            <Image src='/src/assets/Respiration.svg' alt='' />
+            <Image src='/assets/Respiration.svg' alt='' />
             <Paragraph>Ejercicios de respiración</Paragraph>
             <Link to='/exercises/respiration'>
               <RightLine width={30} height={30} />
@@ -20,7 +20,7 @@ const Exercises = () => {
           </ListItem>
 
           <ListItem>
-            <Image src='/src/assets/Motivation.svg' alt='' />
+            <Image src='/assets/Motivation.svg' alt='' />
             <Paragraph>Ejercicios de motivación</Paragraph>
             <Link to='/exercises/motivation'>
               <RightLine width={30} height={30} />
@@ -28,7 +28,7 @@ const Exercises = () => {
           </ListItem>
 
           <ListItem>
-            <Image src='/src/assets/Relax.svg' alt='' />
+            <Image src='/assets/Relax.svg' alt='' />
             <Paragraph>Música relajante</Paragraph>
             <Link to='/exercises/music'>
               <RightLine width={30} height={30} />

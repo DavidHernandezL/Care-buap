@@ -14,7 +14,7 @@ const InputMood = ({ name, ...props }) => {
             {...register(name)}
           />
           <RadioTile className='radio-tile'>
-            <img src='/src/assets/happy.svg' />
+            <img src='/assets/happy.svg' />
           </RadioTile>
         </InputContainer>
 
@@ -27,7 +27,7 @@ const InputMood = ({ name, ...props }) => {
             {...register(name)}
           />
           <RadioTile className='radio-tile'>
-            <img src='/src/assets/regular.svg' />
+            <img src='/assets/regular.svg' />
           </RadioTile>
         </InputContainer>
 
@@ -40,7 +40,7 @@ const InputMood = ({ name, ...props }) => {
             {...register(name)}
           />
           <RadioTile className='radio-tile'>
-            <img src='/src/assets/sad.svg' />
+            <img src='/assets/sad.svg' />
           </RadioTile>
         </InputContainer>
       </Container>
