@@ -26,13 +26,13 @@ const MainHeader = ({ title, subtitle, hasIcon }) => {
         </Aside>
         <picture>
           <source
-            srcSet='/src/assets/logo.svg'
+            srcSet='/assets/logo.svg'
             type='image/svg+xml'
             media='(min-width: 500px)'
             width={150}
             height={150}
           />
-          <img src='/src/assets/logo.svg' alt='Logo' width={100} height={100} />
+          <img src='/assets/logo.svg' alt='Logo' width={100} height={100} />
         </picture>
         <Toaster richColors position='top-center' visibleToasts={1} />
       </Header>

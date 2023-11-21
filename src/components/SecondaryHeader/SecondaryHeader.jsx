@@ -13,13 +13,13 @@ const SecondaryHeader = ({ title, subtitle, hasIcon }) => {
       <Header>
         <picture>
           <source
-            srcSet='/src/assets/logo_letra.svg'
+            srcSet='/assets/logo_letra.svg'
             type='image/svg+xml'
             media='(min-width: 600px)'
             width={150}
             height={150}
           />
-          <img src='/src/assets/logo_letra.svg' alt='Logo' width={100} height={100} />
+          <img src='/assets/logo_letra.svg' alt='Logo' width={100} height={100} />
         </picture>
         <Title>{title}</Title>
         <StyledLink onClick={() => logout()} to='/'>
