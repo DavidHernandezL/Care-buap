@@ -6,15 +6,13 @@ import { useAuth } from '../../context/AuthContext';
 
 const Profile = () => {
   const { user } = useAuth();
+
   return (
     <>
       <SecondaryHeader title={'Perfil'} subtitle={'Información del usuario'} />
 
       <UserCard>
-        <img
-          src={`https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${user.fullName}`}
-          alt='Foto de perfil'
-        />
+        <img src={user.image || '/no-image.png'} alt='Foto de perfil' />
         <section>
           <h3>{user.fullName}</h3>
           <p>{user.studentId}</p>

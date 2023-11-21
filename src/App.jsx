@@ -21,6 +21,9 @@ import NavBar from './components/NavBar/NavBar';
 import Journals from './pages/Journals/Journals';
 import MedicalProfile from './pages/MedicalProfile';
 import Exercise from './pages/Exercise/Exercise';
+import RoleGuard from './guards/RoleGuard';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Users from './pages/Users/Users';
 
 function App() {
   return (
@@ -44,6 +47,10 @@ function App() {
               <Route path='/Journals' element={<Journal />} />
               <Route path='/Professionals' element={<Professionals />} />
               <Route path='/Professionals/:type/:id' element={<MedicalProfile />} />
+              <Route element={<RoleGuard />}>
+                <Route path='/dashboard' element={<Dashboard />} />
+                <Route path='/dashboard/users' element={<Users />} />
+              </Route>
             </Route>
           </Routes>
         </BrowserRouter>

@@ -37,6 +37,8 @@ const Register = () => {
   }, [registerErrors]);
 
   const registerUser = async (data) => {
+    data.image = 'https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${data.fullName}';
+
     signup(data);
   };
 

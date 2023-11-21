@@ -33,11 +33,11 @@ button {
   cursor: pointer;
 }
 
-input[type="number"]::-webkit-inner-spin-button {
+input[type='number']::-webkit-inner-spin-button {
   display: none;
 }
 
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
@@ -46,6 +46,27 @@ input[type="number"] {
   color: var(--primaryColor);
 }
 
-input[type="file"]::-webkit-file-upload-button {
+input[type='file']::-webkit-file-upload-button {
   cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+table {
+  margin: 1rem;
+  border-collapse: collapse;
+  width: 98%;
+  border: 1px solid black;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid black;
+}
+
+th {
+  background-color: #dddddd;
 }
