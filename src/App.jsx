@@ -24,6 +24,11 @@ import Exercise from './pages/Exercise/Exercise';
 import RoleGuard from './guards/RoleGuard';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Users from './pages/Users/Users';
+import ExercisesD from './pages/ExercisesD/ExercisesD';
+import ProfessionalsD from './pages/ProfessionalsD/ProfessionalsD';
+import ProfessionalForm from './pages/ProfessionalForm/';
+import Songs from './pages/Songs/Songs';
+import ExercisesForm from './pages/ExercisesForm';
 
 function App() {
   return (
@@ -50,6 +55,15 @@ function App() {
               <Route element={<RoleGuard />}>
                 <Route path='/dashboard' element={<Dashboard />} />
                 <Route path='/dashboard/users' element={<Users />} />
+                <Route path='/dashboard/exercises' element={<ExercisesD />} />
+                <Route path='/dashboard/exercises/:id' element={<ExercisesForm />} />
+                <Route path='/dashboard/exercises/add' element={<ExercisesForm />} />
+                <Route path='/dashboard/songs' element={<Songs />} />
+                <Route path='/dashboard/professionals' element={<ProfessionalsD />} />
+                <Route
+                  path='/dashboard/professionals/:id'
+                  element={<ProfessionalForm />}
+                />
               </Route>
             </Route>
           </Routes>

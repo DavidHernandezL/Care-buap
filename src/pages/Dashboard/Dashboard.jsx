@@ -25,7 +25,7 @@ const Dashboard = () => {
     };
 
     const getProfessionals = async () => {
-      const { data: res } = await getProfessionalsRequest();
+      const { data: res } = await getProfessionalsRequest(undefined);
       setProfessionals(res.data);
     };
 
@@ -62,20 +62,20 @@ const Dashboard = () => {
             <span>{exercises.length}</span>
           </div>
 
-          <Link to='users'>Ver los ejercicios</Link>
+          <Link to='exercises'>Ver los ejercicios</Link>
         </ExerciseSection>
         <MusicSection>
           <div>
             <h2>Canciones disponibles: </h2>
             <span>{users.length}</span>
           </div>
-          <Link to='users'>Ver todas las canciones</Link>
+          <Link to='songs'>Ver todas las canciones</Link>
         </MusicSection>
         <ProfesionalSection>
           <Info>
             <h2>Especialistas guardados: </h2>
-            <span>{users.length}</span>
-            <Link to='users'>Ver todos los especialistas</Link>
+            <span>{professionals.length}</span>
+            <Link to='professionals'>Ver todos los especialistas</Link>
           </Info>
           <UsersRecent>
             <h3>Agregados recientemente</h3>
@@ -104,8 +104,9 @@ const Container = styled.main`
     'Users Users Users Users'
     'Exercises Exercises Music Music'
     'Profesionales Profesionales Profesionales Profesionales';
-  height: 70vh;
+  height: 80vh;
   margin: 0 1rem;
+  margin-bottom: 5rem;
 `;
 
 const UserSection = styled.section`
