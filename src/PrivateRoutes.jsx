@@ -8,7 +8,10 @@ const PrivateRoutes = () => {
 
   console.log(isAuthenticated, loading);
 
-  if (loading) return <Loader />;
+  if (loading) {
+    console.log('loading');
+    return <Loader />;
+  }
   if (!loading && !isAuthenticated) return <Navigate to='/' />;
 
   return <Outlet />;
