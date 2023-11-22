@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const MusicList = ({ data }) => {
+  console.log(data);
   return (
     <Container>
       {data.songs.map((item, index) => (

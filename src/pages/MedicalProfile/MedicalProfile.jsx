@@ -1,8 +1,11 @@
 import ReturnHeader from '../../components/ReturnHeader/ReturnHeader';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
-import doctors from '../../data/doctors.json';
+
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { getProfessionalsRequest } from '../../services/professional';
 
 const MedicalProfile = () => {
   const profession = {
@@ -10,16 +13,32 @@ const MedicalProfile = () => {
     psychiatrists: 'Psiquiatra',
     neurologists: 'Neurólogo',
   };
+  const [doctors, setDoctors] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getDoctors = async () => {
+      const { data: res } = await getProfessionalsRequest();
+      setDoctors(res.data);
+    };
+
+    getDoctors();
+    setLoading(false);
+  }, []);
+
+  if (loading) return <h1>Cargando...</h1>;
   const { id, type } = useParams();
-  const professional = doctors[type].find((doctor) => doctor.id === id);
-  const { name, picture } = professional;
+  console.log(doctors);
+  const professional = doctors.find((doctor) => doctor.id === id);
+  console.log(professional);
+  const { fullName, image } = professional;
   return (
     <>
       <ReturnHeader title='Perfil Médico' />
       <Main>
         <Card>
-          <ProfilePicture src={picture || '/no-image.png'} alt='Profile picture' />
-          <Name>{name}</Name>
+          <ProfilePicture src={image || '/no-image.png'} alt='Profile picture' />
+          <Name>{fullName}</Name>
           <Profession>{profession[type]}</Profession>
           <Address>{professional.address}</Address>
           <LinkStyled to={professional.page} target='_blank'>

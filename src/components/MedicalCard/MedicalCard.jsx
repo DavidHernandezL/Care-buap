@@ -3,8 +3,8 @@ import styled from 'styled-components';
 const MedicalCard = ({ professional }) => {
   return (
     <Card>
-      <img src={professional.picture || '/no-image.png'} alt='Foto de perfil' />
-      <h2>{professional.name}</h2>
+      <img src={professional.image || '/no-image.png'} alt='Foto de perfil' />
+      <h2>{professional.fullName}</h2>
     </Card>
   );
 };

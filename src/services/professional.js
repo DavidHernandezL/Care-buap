@@ -1,7 +1,6 @@
 import axios from './axios';
 
-export const getProfessionalsRequest = async (limit) =>
-  await axios.get('/professionals', { params: { limit } });
+export const getProfessionalsRequest = async () => await axios.get('/professionals');
 
 export const getProfessionalRequest = async (id) =>
   await axios.get(`/professionals/${id}`);

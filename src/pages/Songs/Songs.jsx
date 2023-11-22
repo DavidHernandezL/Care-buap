@@ -10,7 +10,7 @@ import {
 } from '@tanstack/react-table';
 import { useState } from 'react';
 import { getExercisesRequest } from '../../services/exercise';
-import data from '../../data/exercises.json';
+import data from '../../data/music.json';
 
 const Songs = () => {
   const [exercises, setExercises] = useState([]);

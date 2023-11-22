@@ -1,0 +1,38 @@
+{
+  "title": "Música relajante",
+  "description": "La música relajante puede ayudar a reducir el estrés, la ansiedad y la depresión. También puede ayudar a mejorar el estado de ánimo y la concentración.",
+  "songs": [
+    {
+      "title": "Dreamland",
+      "url": "/src/assets/music/Dreamland - Aakash Gandhi.mp3"
+    },
+    {
+      "title": "Lullaby",
+      "url": "/src/assets/music/Lullaby - JVNA.mp3"
+    },
+    {
+      "title": "Til Death Parts Us",
+      "url": "/src/assets/music/Til Death Parts Us - Aakash Gandhi.mp3"
+    },
+    {
+      "title": "Come With Us",
+      "url": "/src/assets/music/Come With Us - Nat Keefe & Hot Buttered Rum.mp3"
+    },
+    {
+      "title": "Campfire",
+      "url": "/src/assets/music/Campfire - Telecasted.mp3"
+    },
+    {
+      "title": "First Dream",
+      "url": "/src/assets/music/First Dream - Brian Bolger.mp3"
+    },
+    {
+      "title": "Somnia I",
+      "url": "/src/assets/music/Somnia I - Reed Mathis.mp3"
+    },
+    {
+      "title": "Til Death Parts Us",
+      "url": "/src/assets/music/Til Death Parts Us - Aakash Gandhi.mp3"
+    }
+  ]
+}
