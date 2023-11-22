@@ -14,7 +14,7 @@ export const registerUserSchema = z
     fullName: z
       .string()
       .min(3, 'El nombre debe tener al menos 3 caracteres')
-      .regex(/^[a-zA-Z0-9áéíóúüñÑ\s]+$/, {
+      .regex(/^[a-zA-ZáéíóúüñÑ\s]+$/, {
         message: 'El nombre solo puede contener letras',
       })
       .refine((value) => {

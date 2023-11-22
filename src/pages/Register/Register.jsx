@@ -36,7 +36,7 @@ const Register = () => {
 
   useEffect(() => {
     if (registerErrors) {
-      toast.error(registerErrors, { duration: 3000 });
+      setLoading(false);
     }
   }, [registerErrors]);
 
@@ -56,6 +56,7 @@ const Register = () => {
           <Container>
             <FormProvider {...methods}>
               <Form onSubmit={methods.handleSubmit(registerUser)}>
+                {registerErrors && <ErrorMessage>{registerErrors.msg}</ErrorMessage>}
                 <Input
                   label='Nombre Completo'
                   name={'fullName'}
