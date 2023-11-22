@@ -13,38 +13,45 @@ const MedicalProfile = () => {
     psychiatrists: 'Psiquiatra',
     neurologists: 'Neurólogo',
   };
-  const [doctors, setDoctors] = useState({});
+  const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { id, type } = useParams();
 
   useEffect(() => {
     const getDoctors = async () => {
       const { data: res } = await getProfessionalsRequest();
       setDoctors(res.data);
     };
-
     getDoctors();
-    setLoading(false);
   }, []);
 
-  if (loading) return <h1>Cargando...</h1>;
-  const { id, type } = useParams();
-  console.log(doctors);
+  useEffect(() => {
+    if (doctors.length) {
+      setLoading(false);
+    }
+  }, [doctors]);
+
   const professional = doctors.find((doctor) => doctor.id === id);
-  console.log(professional);
-  const { fullName, image } = professional;
   return (
     <>
       <ReturnHeader title='Perfil Médico' />
       <Main>
-        <Card>
-          <ProfilePicture src={image || '/no-image.png'} alt='Profile picture' />
-          <Name>{fullName}</Name>
-          <Profession>{profession[type]}</Profession>
-          <Address>{professional.address}</Address>
-          <LinkStyled to={professional.page} target='_blank'>
-            Contactar
-          </LinkStyled>
-        </Card>
+        {loading ? (
+          <h1>Cargando...</h1>
+        ) : (
+          <Card>
+            <ProfilePicture
+              src={professional.image || '/no-image.png'}
+              alt='Profile picture'
+            />
+            <Name>{professional.fullName}</Name>
+            <Profession>{profession[type]}</Profession>
+            <Address>{professional.address}</Address>
+            <LinkStyled to={professional.page} target='_blank'>
+              Contactar
+            </LinkStyled>
+          </Card>
+        )}
       </Main>
     </>
   );

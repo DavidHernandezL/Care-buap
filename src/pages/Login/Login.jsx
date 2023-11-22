@@ -33,7 +33,7 @@ const Login = () => {
 
   useEffect(() => {
     if (loginErrors) {
-      toast.error(loginErrors.msg, { duration: 3000 });
+      setLoading(false);
     }
   }, [loginErrors]);
 
@@ -54,6 +54,7 @@ const Login = () => {
           <Container>
             <FormProvider {...methods}>
               <Form style={{ width: '100%' }} onSubmit={methods.handleSubmit(loginUser)}>
+                {loginErrors && <ErrorMessage>{loginErrors.msg}</ErrorMessage>}
                 <Input
                   label='Matricula'
                   name={'studentId'}

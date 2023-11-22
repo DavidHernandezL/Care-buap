@@ -23,6 +23,13 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setErrors(null);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [errors]);
+
+  useEffect(() => {
     const checkLogin = async () => {
       const cookies = Cookies.get();
       if (!cookies.token) {
