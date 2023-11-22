@@ -15,6 +15,7 @@ import { registerUserSchema } from '@utils/validationSchemas';
 
 import { useAuth } from '../../context/AuthContext';
 import Loader from '../../components/Loader';
+import { useState } from 'react';
 
 const Register = () => {
   const { signup, isAuthenticated, errors: registerErrors } = useAuth();
