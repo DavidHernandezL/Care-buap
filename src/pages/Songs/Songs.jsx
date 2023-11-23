@@ -19,14 +19,14 @@ const Songs = () => {
   const { songs } = data[2];
 
   const onDeleteClick = async (id) => {
-    console.log('id', id);
+    
 
     const newExercises = exercises.filter((exercise) => exercise._id !== id);
     setExercises(newExercises);
   };
 
   const onEditClick = async (id) => {
-    console.log('id', id);
+    
   };
 
   const columns = [
@@ -49,7 +49,7 @@ const Songs = () => {
   useEffect(() => {
     const getUsers = async () => {
       const { data: res } = await getExercisesRequest(undefined);
-      console.log(res.data);
+      
       setExercises(res.data);
     };
     getUsers();

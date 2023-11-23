@@ -19,7 +19,7 @@ const ExercisesD = () => {
   const navigate = useNavigate();
 
   const onDeleteClick = async (id) => {
-    console.log('id', id);
+    
 
     const { data: res } = await deleteExerciseRequest(id);
     const newExercises = exercises.filter((exercise) => exercise._id !== id);
@@ -80,7 +80,7 @@ const ExercisesD = () => {
   useEffect(() => {
     const getUsers = async () => {
       const { data: res } = await getExercisesRequest(undefined);
-      console.log(res.data);
+      
       setExercises(res.data);
     };
     getUsers();

@@ -26,7 +26,7 @@ const Exercise = () => {
   const [exercises, setExercises] = useState([]);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  console.log(music);
+  
 
   useEffect(() => {
     const getExercises = async () => {
@@ -35,13 +35,13 @@ const Exercise = () => {
       const exercisesAvailable = res.data.filter(
         (exercise) => exercise.type === id.toUpperCase()
       );
-      console.log(exercisesAvailable);
+      
       const data = {
         title: info[id].title,
         description: info[id].description,
         exercises: exercisesAvailable,
       };
-      console.log(data);
+      
       setExercises(data);
       setLoading(false);
     };
@@ -51,7 +51,7 @@ const Exercise = () => {
     if (id === 'music') setLoading(false);
   }, []);
 
-  console.log(exercises);
+  
   return (
     <>
       <ReturnHeader title={'Ejercicios'} />

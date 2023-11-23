@@ -22,17 +22,13 @@ const ProfessionalsD = () => {
   const navigate = useNavigate();
 
   const onDeleteClick = async (id) => {
-    console.log('id', id);
-
     const { data: res } = await deleteProfessionalRequest(id);
-    console.log(res);
 
     const newExercises = users.filter((exercise) => exercise._id !== id);
     setUsers(newExercises);
   };
 
   const onEditClick = async (id) => {
-    console.log('id', id);
     navigate(`/dashboard/professionals/${id}`);
   };
 
@@ -90,7 +86,7 @@ const ProfessionalsD = () => {
   useEffect(() => {
     const getUsers = async () => {
       const { data: res } = await getProfessionalsRequest(undefined);
-      console.log(res.data);
+
       setUsers(res.data);
     };
     getUsers();
@@ -99,7 +95,7 @@ const ProfessionalsD = () => {
     <>
       <ReturnHeader title={'Usuarios'} />
       <Main>
-        <LinkStyled to='/dashboard/professionals/add'>Agregar especialista</LinkStyled>
+        <LinkStyled to='/dashboard/professionals/add'>Agregar profesional</LinkStyled>
         <table>
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -127,9 +123,11 @@ const ProfessionalsD = () => {
         </table>
         <div>
           <PreviousButton onClick={table.getPaginationRowModel().previousPage}>
-            Previous
+            Anterior
           </PreviousButton>
-          <NextButton onClick={table.getPaginationRowModel().nextPage}>Next</NextButton>
+          <NextButton onClick={table.getPaginationRowModel().nextPage}>
+            Siguiente
+          </NextButton>
         </div>
       </Main>
     </>

@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import LeftArrow from '@components/Icons/LeftArrow';
 import Exit from '@components/Icons/Exit';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
-const SecondaryHeader = ({ title, subtitle, hasIcon }) => {
+const SecondaryHeader = ({ title }) => {
   const { logout } = useAuth();
   return (
     <>

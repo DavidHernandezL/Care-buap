@@ -54,7 +54,7 @@ const Users = () => {
   useEffect(() => {
     const getUsers = async () => {
       const { data: res } = await getUsersRequest(undefined);
-      console.log(res.data);
+      
       setUsers(res.data);
     };
     getUsers();

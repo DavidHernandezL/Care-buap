@@ -17,7 +17,7 @@ const Professionals = () => {
   useEffect(() => {
     const getDoctors = async () => {
       const { data: res } = await getProfessionalsRequest();
-      console.log(res.data);
+      
       const psychologists = res.data.filter(
         (professional) => professional.type === 'psychologist'
       );

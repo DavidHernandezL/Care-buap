@@ -5,10 +5,7 @@ import { toast } from 'sonner';
 import ButtonPrimary from '@components/ButtonPrimary';
 import ErrorMessage from '@components/ErrorMessage';
 import Input from '@components/Input';
-import InputPassword from '@components/InputPassword';
 import ReturnHeader from '@components/ReturnHeader';
-
-import { loginSchema } from '@utils/validationSchemas';
 import { Container, Form, DateStyled } from './styles';
 
 import { useAuth } from '../../context/AuthContext';

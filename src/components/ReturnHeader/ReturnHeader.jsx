@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import LeftArrow from '@components/Icons/LeftArrow';
-import Exit from '@components/Icons/Exit';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import Input from '@components/Input';
 
 const ReturnHeader = ({ title }) => {
   const navigate = useNavigate();

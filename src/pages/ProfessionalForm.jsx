@@ -48,7 +48,7 @@ const ProfesionalForm = () => {
       }
       navigate('/dashboard');
     } catch (error) {
-      console.log(error);
+      
     }
   };
 

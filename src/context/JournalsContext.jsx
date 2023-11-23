@@ -24,12 +24,12 @@ export const JournalsProvider = ({ children }) => {
 
   const getJournals = async () => {
     const { data: res } = await getJournalRequest();
-    console.log(res.data);
+    
     setJournals(res.data);
   };
   const createJournal = async (journal) => {
     const res = await createJournalRequest(journal);
-    console.log(res);
+    
   };
 
   const getJournal = async (id) => {

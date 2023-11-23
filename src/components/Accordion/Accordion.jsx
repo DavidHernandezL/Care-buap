@@ -1,13 +1,12 @@
-import { useState } from 'react';
-import Plus from '../Icons/Plus';
-
-import './Accordion.css';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Plus from '../Icons/Plus';
+import './Accordion.css';
 
 const Accordion = ({ data }) => {
   const [activeItem, setActiveItem] = useState(null);
   const [scrollHeight, setScrollHeight] = useState(0);
+
   useEffect(() => {
     if (activeItem !== null) {
       const element = document.querySelector('.accordion__content');

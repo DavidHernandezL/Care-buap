@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
-import { toast } from 'sonner';
 
 import ButtonPrimary from '../../components/ButtonPrimary';
 import ErrorMessage from '@components/ErrorMessage';
@@ -74,7 +73,7 @@ const Register = () => {
                   name={'studentId'}
                   registerOptions={{ valueAsNumber: true }}
                   {...{
-                    placeholder: 'Ingrese su matricula',
+                    placeholder: 'Ingrese su matricula (9 dígitos)',
                     type: 'number',
                     inputMode: 'numeric',
                   }}
@@ -99,6 +98,9 @@ const Register = () => {
                     placeholder: 'Ingrese su contraseña',
                   }}
                 />
+                <p style={{ fontSize: '0.8rem' }}>
+                  *La contraseña debe contener al menos 6 caracteres
+                </p>
                 {errors.password && (
                   <ErrorMessage>{errors.password.message}</ErrorMessage>
                 )}

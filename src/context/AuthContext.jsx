@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(true);
       setErrors(null);
     } catch (error) {
-      console.log(error.response.data.msg);
+      
       setErrors({ msg: error.response.data.msg });
     }
   };
@@ -69,12 +69,12 @@ export const AuthProvider = ({ children }) => {
     try {
       const { data: response } = await loginUserRequest(user);
       const { data: userResponse } = response;
-      console.log(userResponse);
+      
       setUser(userResponse);
       setIsAuthenticated(true);
       setErrors(null);
     } catch (error) {
-      console.log(error.response.data.msg);
+      
       setErrors({ msg: error.response.data.msg });
     }
   };

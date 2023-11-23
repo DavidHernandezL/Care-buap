@@ -56,11 +56,11 @@ const Login = () => {
               <Form style={{ width: '100%' }} onSubmit={methods.handleSubmit(loginUser)}>
                 {loginErrors && <ErrorMessage>{loginErrors.msg}</ErrorMessage>}
                 <Input
-                  label='Matricula'
+                  label='Matrícula'
                   name={'studentId'}
                   registerOptions={{ valueAsNumber: true }}
                   {...{
-                    placeholder: 'Ingrese su matricula',
+                    placeholder: 'Ingrese su matrícula (9 dígitos)',
                     type: 'number',
                     inputMode: 'numeric',
                   }}

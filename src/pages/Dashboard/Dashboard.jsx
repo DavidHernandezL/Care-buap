@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import { getExercisesRequest } from '../../services/exercise';
 import { getProfessionalsRequest } from '../../services/professional';
+import music from '../../data/music.json';
 const Dashboard = () => {
   const [users, setUsers] = useState([]);
   const [exercises, setExercises] = useState([]);
@@ -67,15 +68,15 @@ const Dashboard = () => {
         <MusicSection>
           <div>
             <h2>Canciones disponibles: </h2>
-            <span>{users.length}</span>
+            <span>{music.length}</span>
           </div>
           <Link to='songs'>Ver todas las canciones</Link>
         </MusicSection>
         <ProfesionalSection>
           <Info>
-            <h2>Especialistas guardados: </h2>
+            <h2>Profesionales guardados: </h2>
             <span>{professionals.length}</span>
-            <Link to='professionals'>Ver todos los especialistas</Link>
+            <Link to='professionals'>Ver todos los profesionales</Link>
           </Info>
           <UsersRecent>
             <h3>Agregados recientemente</h3>

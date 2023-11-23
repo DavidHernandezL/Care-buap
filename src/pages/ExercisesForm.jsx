@@ -36,29 +36,25 @@ const ExercisesForm = () => {
       setValue('type', res.data.type);
       setSteps(res.data.steps);
     };
-    if (id !== 'add') getProfesional();
+    if (id) getProfesional();
   }, []);
   const navigate = useNavigate();
   const onSubmit = async (data) => {
     try {
-      let s = Object.keys(data).filter((key) => key.match(/^[ \t]*step[0-9]+$/));
-      s = s.map((key) => data[key]);
-      data.steps = s;
-      data.steps.forEach((_, index) => {
-        delete data['step' + index];
-      });
+      
+      data.steps = steps;
 
-      if (id !== 'add') {
+      if (id) {
         const res = await updateExerciseRequest(id, data);
-        console.log(res);
+        
       } else {
         const res = await createExerciseRequest(data);
-        console.log(res);
+        
       }
 
       navigate('/dashboard');
     } catch (error) {
-      console.log(error);
+      
     }
   };
   return (
