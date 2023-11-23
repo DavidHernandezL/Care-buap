@@ -91,7 +91,7 @@ export const AuthProvider = ({ children }) => {
   const recoverPassword = async (email) => {
     try {
       const { data: response } = await recoverPasswordRequest(email);
-      console.log(response);
+      return response;
     } catch (error) {
       console.log(error.response.data);
       setErrors({ msg: error.response.data.msg });

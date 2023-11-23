@@ -27,9 +27,11 @@ const RecoverPassword = () => {
   }, [recoverErrors]);
 
   const onSubmit = async (email) => {
-    console.log(email); // { email: 'email' }
     const res = await recoverPassword(email);
-    // navigate('/auth/reset-password');
+    if (res.status === 'OK') {
+      alert('Se ha enviado un correo de recuperación correo electrónico.');
+      navigate('/auth/login');
+    }
   };
 
   return (
