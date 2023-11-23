@@ -1,6 +1,11 @@
 import { createContext, useState, useContext } from 'react';
 import { registerUserRequest } from '@services/user';
-import { loginUserRequest, verifyUserTokenRequest } from '@services/auth';
+import {
+  loginUserRequest,
+  verifyUserTokenRequest,
+  recoverPasswordRequest,
+  resetPasswordRequest,
+} from '@services/auth';
 import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 
@@ -60,7 +65,6 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(true);
       setErrors(null);
     } catch (error) {
-      
       setErrors({ msg: error.response.data.msg });
     }
   };
@@ -69,12 +73,11 @@ export const AuthProvider = ({ children }) => {
     try {
       const { data: response } = await loginUserRequest(user);
       const { data: userResponse } = response;
-      
+
       setUser(userResponse);
       setIsAuthenticated(true);
       setErrors(null);
     } catch (error) {
-      
       setErrors({ msg: error.response.data.msg });
     }
   };
@@ -85,9 +88,39 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
   };
 
+  const recoverPassword = async (email) => {
+    try {
+      const { data: response } = await recoverPasswordRequest(email);
+      console.log(response);
+    } catch (error) {
+      console.log(error.response.data);
+      setErrors({ msg: error.response.data.msg });
+    }
+  };
+
+  const resetPassword = async (id, token, data) => {
+    try {
+      const { data: response } = await resetPasswordRequest(id, token, data);
+      return response;
+    } catch (error) {
+      console.log(error.response.data);
+      setErrors({ msg: error.response.data.msg });
+    }
+  };
+
   return (
     <AuthContext.Provider
-      value={{ signup, signin, user, isAuthenticated, errors, loading, logout }}
+      value={{
+        signup,
+        signin,
+        user,
+        isAuthenticated,
+        errors,
+        loading,
+        logout,
+        recoverPassword,
+        resetPassword,
+      }}
     >
       {children}
     </AuthContext.Provider>

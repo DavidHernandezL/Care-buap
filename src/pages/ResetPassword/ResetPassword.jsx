@@ -6,14 +6,24 @@ import ButtonPrimary from '../../components/ButtonPrimary';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useAuth } from '../../context/AuthContext';
+import { useParams } from 'react-router-dom';
+import ErrorMessage from '../../components/ErrorMessage';
 
 const ResetPassword = () => {
   const navigate = useNavigate();
+  const { id, token } = useParams();
+  const { resetPassword, errors: resetErrors } = useAuth();
   const { handleSubmit, ...methods } = useForm();
 
   const onSubmit = async (data) => {
-    navigate('/auth/login');
+    const res = await resetPassword(id, token, data);
+    if (res.status === 'OK') {
+      alert('Contraseña cambiada correctamente');
+      navigate('/auth/login');
+    }
   };
+
   return (
     <>
       <MainHeader
@@ -25,11 +35,15 @@ const ResetPassword = () => {
         <FormProvider {...methods}>
           <form style={{ width: '100%' }} onSubmit={handleSubmit(onSubmit)}>
             <InputSection>
+              {resetErrors && <ErrorMessage>{resetErrors.msg}</ErrorMessage>}
               <PwdInput
-                label='Contraseña'
+                label='Nueva contraseña'
                 name={'password'}
-                {...{ placeholder: 'Ingrese su contraseña' }}
+                {...{ placeholder: 'Ingrese una nueva contraseña' }}
               />
+              <p style={{ fontSize: '0.8rem' }}>
+                *La contraseña debe tener al menos 9 caracteres
+              </p>
               <PwdInput
                 label='Confirme su contraseña'
                 name={'passwordConfirm'}

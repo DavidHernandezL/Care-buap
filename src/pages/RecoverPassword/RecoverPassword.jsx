@@ -6,15 +6,30 @@ import ButtonPrimary from '../../components/ButtonPrimary';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useAuth } from '../../context/AuthContext';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import ErrorMessage from '../../components/ErrorMessage';
 
 const RecoverPassword = () => {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { errors: recoverErrors, recoverPassword } = useAuth();
   const {
     formState: { errors },
     ...methods
   } = useForm();
+
+  useEffect(() => {
+    if (recoverErrors) {
+      setLoading(false);
+    }
+  }, [recoverErrors]);
+
   const onSubmit = async (email) => {
-    navigate('/auth/reset-password');
+    console.log(email); // { email: 'email' }
+    const res = await recoverPassword(email);
+    // navigate('/auth/reset-password');
   };
 
   return (
@@ -28,11 +43,13 @@ const RecoverPassword = () => {
         <FormProvider {...methods}>
           <form style={{ width: '100%' }} onSubmit={methods.handleSubmit(onSubmit)}>
             <InputSection>
+              {recoverErrors && <ErrorMessage>{recoverErrors.msg}</ErrorMessage>}
               <Input
                 label='Correo Institucional'
                 name={'email'}
                 {...{ placeholder: 'nombre@alumno.buap.mx', type: 'email' }}
               />
+              {errors.email && <ErrorMessage message={errors.email.message} />}
               <ButtonPrimary type='submit'>Enviar correo de recuperación</ButtonPrimary>
             </InputSection>
           </form>

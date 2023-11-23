@@ -1,5 +1,4 @@
 import Diary from './Diary';
-import EditProfile from './EditProfile';
 import Exercises from './Exercises';
 import Login from './Login';
 import Professionals from './Professionals';
@@ -15,7 +14,6 @@ export {
   RecoverPassword,
   ResetPassword,
   Profile,
-  EditProfile,
   Diary,
   Exercises,
   Professionals,

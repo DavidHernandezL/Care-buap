@@ -2,10 +2,7 @@ import ReturnHeader from '../components/ReturnHeader/ReturnHeader';
 import styled from 'styled-components';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { editSchema } from '../utils/validationSchemas';
-import { zodResolver } from '@hookform/resolvers/zod';
 import Input from '../components/Input';
-import PwdInput from '../components/InputImage';
 import { useEffect } from 'react';
 import ErrorMessage from '../components/ErrorMessage';
 import ButtonPrimary from '../components/ButtonPrimary';
@@ -41,21 +38,16 @@ const ExercisesForm = () => {
   const navigate = useNavigate();
   const onSubmit = async (data) => {
     try {
-      
       data.steps = steps;
 
       if (id) {
         const res = await updateExerciseRequest(id, data);
-        
       } else {
         const res = await createExerciseRequest(data);
-        
       }
 
       navigate('/dashboard');
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
   return (
     <>

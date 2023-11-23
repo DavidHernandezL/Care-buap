@@ -12,12 +12,10 @@ import {
   Exercises,
   Diary,
   Professionals,
-  EditProfile,
   ErrorPage,
 } from '@pages';
 import { JournalsProvider } from './context/JournalsContext';
 import Journal from './pages/Journal';
-import NavBar from './components/NavBar/NavBar';
 import Journals from './pages/Journals/Journals';
 import MedicalProfile from './pages/MedicalProfile';
 import Exercise from './pages/Exercise/Exercise';
@@ -40,7 +38,7 @@ function App() {
             <Route path='/auth/login' element={<Login />} />
             <Route path='/auth/register' element={<Register />} />
             <Route path='/forgot-password' element={<RecoverPassword />} />
-            <Route path='/reset-password/:id' element={<ResetPassword />} />
+            <Route path='/reset-password/:id/:token' element={<ResetPassword />} />
             <Route path='*' element={<ErrorPage />} />
             <Route element={<PrivateRoutes />}>
               <Route path='/profile' element={<Profile />} />
