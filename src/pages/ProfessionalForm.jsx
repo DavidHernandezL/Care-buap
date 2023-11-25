@@ -13,6 +13,8 @@ import {
 } from '../services/professional';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { professionalSchema } from '../utils/validationSchemas';
 
 const ProfesionalForm = () => {
   const { id } = useParams();
@@ -21,7 +23,9 @@ const ProfesionalForm = () => {
     formState: { errors },
     setValue,
     ...methods
-  } = useForm();
+  } = useForm({
+    resolver: zodResolver(professionalSchema),
+  });
 
   useEffect(() => {
     const getProfesional = async () => {
@@ -73,6 +77,7 @@ const ProfesionalForm = () => {
                   inputMode: 'text',
                 }}
               />
+              {errors.address && <ErrorMessage>{errors.address.message}</ErrorMessage>}
               <RadioField>
                 <input
                   {...methods.register('type')}
@@ -100,6 +105,7 @@ const ProfesionalForm = () => {
                 />
                 <label htmlFor=''>Neurólogo</label>
               </RadioField>
+              {errors.type && <ErrorMessage>{errors.type.message}</ErrorMessage>}
               <Input
                 label='Pagina web'
                 name={'page'}
@@ -109,6 +115,7 @@ const ProfesionalForm = () => {
                   inputMode: 'text',
                 }}
               />
+              {errors.page && <ErrorMessage>{errors.page.message}</ErrorMessage>}
               <Input
                 label='Imagen de perfil'
                 name={'image'}
@@ -118,7 +125,7 @@ const ProfesionalForm = () => {
                   inputMode: 'text',
                 }}
               />
-
+              {errors.image && <ErrorMessage>{errors.image.message}</ErrorMessage>}
               <ButtonPrimary type='submit'>
                 {id !== 'add' ? 'Editar especialista' : 'Agregar especialista'}
               </ButtonPrimary>
@@ -138,7 +145,7 @@ const Container = styled.main`
   justify-content: center;
   width: 100vw;
   align-items: center;
-  height: calc(100vh - 300px);
+  margin-top: 2rem;
 `;
 
 const InputSection = styled.section`

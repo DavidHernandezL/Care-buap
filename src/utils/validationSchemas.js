@@ -85,9 +85,21 @@ export const editExercisesSchema = z.object({
   steps: z.array().nonempty('Debes agregar al menos un paso').optional(),
 });
 
-export const createExerciseSchema = z.object({
-  name: z.string().min(3, 'El título debe tener al menos 3 caracteres'),
-  type: z.enum(['RESPIRATION', 'MOTIVATION']),
-  description: z.string().min(3, 'El contenido debe tener al menos 3 caracteres'),
-  steps: z.array().nonempty('Debes agregar al menos un paso'),
+export const professionalSchema = z.object({
+  fullName: z
+    .string()
+    .min(3, 'El nombre debe tener al menos 3 caracteres')
+    .regex(/^[a-zA-ZáéíóúüñÑ\s]+$/, {
+      message: 'El nombre solo puede contener letras',
+    })
+    .refine((value) => {
+      return value.split(' ').length >= 2;
+    }, 'El nombre debe tener al menos 2 palabras'),
+  address: z.string().min(3, 'La dirección debe tener al menos 3 caracteres'),
+  type: z.enum(['psychologist', 'psychiatrists', 'neurologists'], {
+    required_error: 'El tipo de profesional es requerido',
+    invalid_type_error: 'El tipo de profesional es requerido',
+  }),
+  page: z.string().url('La URL debe ser válida'),
+  image: z.string().url('La URL debe ser válida'),
 });

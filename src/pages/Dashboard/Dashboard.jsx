@@ -65,13 +65,6 @@ const Dashboard = () => {
 
           <Link to='exercises'>Ver los ejercicios</Link>
         </ExerciseSection>
-        <MusicSection>
-          <div>
-            <h2>Canciones disponibles: </h2>
-            <span>{music.length}</span>
-          </div>
-          <Link to='songs'>Ver todas las canciones</Link>
-        </MusicSection>
         <ProfesionalSection>
           <Info>
             <h2>Profesionales guardados: </h2>
@@ -103,7 +96,7 @@ const Container = styled.main`
   gap: 1rem 1rem;
   grid-template-areas:
     'Users Users Users Users'
-    'Exercises Exercises Music Music'
+    'Exercises Exercises Exercises Exercises'
     'Profesionales Profesionales Profesionales Profesionales';
   height: 80vh;
   margin: 0 1rem;
