@@ -9,12 +9,20 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useAuth } from '../../context/AuthContext';
 import { useParams } from 'react-router-dom';
 import ErrorMessage from '../../components/ErrorMessage';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { resetPasswordSchema } from '../../utils/validationSchemas';
 
 const ResetPassword = () => {
   const navigate = useNavigate();
   const { id, token } = useParams();
   const { resetPassword, errors: resetErrors } = useAuth();
-  const { handleSubmit, ...methods } = useForm();
+  const {
+    handleSubmit,
+    formState: { errors },
+    ...methods
+  } = useForm({
+    resolver: zodResolver(resetPasswordSchema),
+  });
 
   const onSubmit = async (data) => {
     const res = await resetPassword(id, token, data);
@@ -24,6 +32,7 @@ const ResetPassword = () => {
     }
   };
 
+  console.log(errors);
   return (
     <>
       <MainHeader
@@ -41,14 +50,18 @@ const ResetPassword = () => {
                 name={'password'}
                 {...{ placeholder: 'Ingrese una nueva contraseña' }}
               />
+              {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
               <p style={{ fontSize: '0.8rem' }}>
-                *La contraseña debe tener al menos 9 caracteres
+                *La contraseña debe tener al menos 6 caracteres
               </p>
               <PwdInput
                 label='Confirme su contraseña'
                 name={'passwordConfirm'}
                 {...{ placeholder: 'Confirme su contraseña' }}
               />
+              {errors.passwordConfirm && (
+                <ErrorMessage>{errors.passwordConfirm.message}</ErrorMessage>
+              )}
               <ButtonPrimary type='submit'>Cambiar contraseña</ButtonPrimary>
             </InputSection>
           </form>

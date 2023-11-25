@@ -10,6 +10,8 @@ import { useAuth } from '../../context/AuthContext';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { recoveryPasswordSchema } from '../../utils/validationSchemas';
 
 const RecoverPassword = () => {
   const [loading, setLoading] = useState(false);
@@ -18,7 +20,9 @@ const RecoverPassword = () => {
   const {
     formState: { errors },
     ...methods
-  } = useForm();
+  } = useForm({
+    resolver: zodResolver(recoveryPasswordSchema),
+  });
 
   useEffect(() => {
     if (recoverErrors) {
@@ -51,7 +55,7 @@ const RecoverPassword = () => {
                 name={'email'}
                 {...{ placeholder: 'nombre@alumno.buap.mx', type: 'email' }}
               />
-              {errors.email && <ErrorMessage message={errors.email.message} />}
+              {errors.email && <ErrorMessage>{errors.email.message} </ErrorMessage>}
               <ButtonPrimary type='submit'>Enviar correo de recuperación</ButtonPrimary>
             </InputSection>
           </form>

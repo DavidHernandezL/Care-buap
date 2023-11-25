@@ -17,7 +17,7 @@ const MainHeader = ({ title, subtitle, hasIcon }) => {
         <Aside>
           {hasIcon && (
             <LeftArrow
-              {...{ width: 55, height: 55, color: '#FFF' }}
+              {...{ width: 45, height: 45, color: '#FFF', cursor: 'pointer' }}
               onClick={handleBack}
             />
           )}
@@ -58,13 +58,13 @@ const Aside = styled.aside`
 `;
 
 const Title = styled.h1`
-  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-size: clamp(1.5rem, 5vw, 2rem);
   font-weight: 700;
   color: var(--white);
 `;
 
 const Subtitle = styled.h2`
-  font-size: clamp(1.1rem, 4vw, 1.7rem);
+  font-size: clamp(1rem, 4vw, 1.5rem);
   font-weight: 400;
   color: var(--white);
 `;

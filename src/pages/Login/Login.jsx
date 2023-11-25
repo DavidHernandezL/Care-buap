@@ -1,6 +1,5 @@
 import { useForm, FormProvider, set } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { toast } from 'sonner';
 
 import ButtonPrimary from '@components/ButtonPrimary';
 import ErrorMessage from '@components/ErrorMessage';

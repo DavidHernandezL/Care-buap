@@ -14,14 +14,14 @@ const SecondaryHeader = ({ title }) => {
             srcSet='/assets/logo_letra.svg'
             type='image/svg+xml'
             media='(min-width: 600px)'
-            width={150}
-            height={150}
+            width={110}
+            height={110}
           />
-          <img src='/assets/logo_letra.svg' alt='Logo' width={100} height={100} />
+          <img src='/assets/logo_letra.svg' alt='Logo' width={90} height={90} />
         </picture>
         <Title>{title}</Title>
         <StyledLink onClick={() => logout()} to='/'>
-          <Exit width={50} height={50} color={'#FFF'} />
+          <Exit width={40} height={40} color={'#FFF'} />
           <Subtitle>Salir</Subtitle>
         </StyledLink>
       </Header>
@@ -33,7 +33,7 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 0 1.6rem;
   background: var(--primaryColor);
   position: sticky;
   top: 0;
@@ -47,13 +47,13 @@ const StyledLink = styled(Link)`
 `;
 
 const Title = styled.h1`
-  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-size: clamp(1.2rem, 5vw, 2rem);
   font-weight: 700;
   color: var(--white);
 `;
 
 const Subtitle = styled.h2`
-  font-size: clamp(1.1rem, 4vw, 1.7rem);
+  font-size: clamp(1rem, 4vw, 1.6rem);
   font-weight: 400;
   color: var(--white);
 `;

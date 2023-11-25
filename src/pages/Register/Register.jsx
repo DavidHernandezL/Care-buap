@@ -40,7 +40,7 @@ const Register = () => {
   }, [registerErrors]);
 
   const registerUser = async (data) => {
-    data.image = 'https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${data.fullName}';
+    data.image = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${data.fullName}`;
     setLoading(true);
     signup(data);
   };
@@ -57,7 +57,7 @@ const Register = () => {
               <Form onSubmit={methods.handleSubmit(registerUser)}>
                 {registerErrors && <ErrorMessage>{registerErrors.msg}</ErrorMessage>}
                 <Input
-                  label='Nombre Completo'
+                  label='Nombre completo'
                   name={'fullName'}
                   {...{
                     placeholder: 'Ingrese su nombre completo',
@@ -69,7 +69,7 @@ const Register = () => {
                   <ErrorMessage>{errors.fullName.message}</ErrorMessage>
                 )}
                 <Input
-                  label='Matricula'
+                  label='Matrícula'
                   name={'studentId'}
                   registerOptions={{ valueAsNumber: true }}
                   {...{
@@ -82,7 +82,7 @@ const Register = () => {
                   <ErrorMessage>{errors.studentId.message}</ErrorMessage>
                 )}
                 <Input
-                  label='Correo Institucional'
+                  label='Correo institucional'
                   name={'email'}
                   {...{
                     placeholder: 'nombre@alumno.buap.mx',

@@ -1,11 +1,11 @@
-import { z } from 'zod';
+import z from 'zod';
 
 export const loginSchema = z.object({
   studentId: z
     .number({
-      invalid_type_error: 'La matricula es requerida',
+      invalid_type_error: 'La matrícula es requerida',
     })
-    .min(100000000, 'La matricula debe tener 9 dígitos'),
+    .min(100000000, 'La matrícula debe tener 9 dígitos'),
   password: z.string().min(6, 'La contraseña debe tener al menos 6 caracteres'),
 });
 
@@ -22,9 +22,9 @@ export const registerUserSchema = z
       }, 'El nombre debe tener al menos 2 palabras'),
     studentId: z
       .number({
-        invalid_type_error: 'La matricula es requerida',
+        invalid_type_error: 'La matrícula es requerida',
       })
-      .min(100000000, 'La matricula debe tener 9 dígitos'),
+      .min(100000000, 'La matrícula debe tener 9 dígitos'),
     email: z.string().email('El correo debe ser válido').includes('@alumno.buap.mx', {
       message: 'El correo debe ser institucional',
     }),
@@ -51,4 +51,43 @@ export const createPostSchema = z.object({
     required_error: 'El estado de ánimo es requerido',
     invalid_type_error: 'El estado de ánimo es requerido',
   }),
+});
+
+export const recoveryPasswordSchema = z.object({
+  email: z
+    .string({
+      required_error: 'El correo es requerido',
+      invalid_type_error: 'El correo es requerido',
+    })
+    .email('El correo debe ser válido')
+    .includes('@alumno.buap.mx', {
+      message: 'El correo debe ser institucional',
+    }),
+});
+
+export const resetPasswordSchema = z
+  .object({
+    password: z.string().min(6, 'La contraseña debe tener al menos 6 caracteres'),
+    passwordConfirm: z.string().min(6, 'La contraseña debe tener al menos 6 caracteres'),
+  })
+  .refine((values) => values.password === values.passwordConfirm, {
+    message: 'Las contraseñas no coinciden',
+    path: ['passwordConfirm'],
+  });
+
+export const editExercisesSchema = z.object({
+  name: z.string().min(3, 'El título debe tener al menos 3 caracteres').optional(),
+  type: z.enum(['RESPIRATION', 'MOTIVATION']).optional(),
+  description: z
+    .string()
+    .min(3, 'El contenido debe tener al menos 3 caracteres')
+    .optional(),
+  steps: z.array().nonempty('Debes agregar al menos un paso').optional(),
+});
+
+export const createExerciseSchema = z.object({
+  name: z.string().min(3, 'El título debe tener al menos 3 caracteres'),
+  type: z.enum(['RESPIRATION', 'MOTIVATION']),
+  description: z.string().min(3, 'El contenido debe tener al menos 3 caracteres'),
+  steps: z.array().nonempty('Debes agregar al menos un paso'),
 });

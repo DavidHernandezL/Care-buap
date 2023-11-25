@@ -9,6 +9,7 @@ import {
 } from '@tanstack/react-table';
 import { useState } from 'react';
 import { getUsersRequest } from '../../services/user';
+import daysJS from 'dayjs';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -54,7 +55,9 @@ const Users = () => {
   useEffect(() => {
     const getUsers = async () => {
       const { data: res } = await getUsersRequest(undefined);
-      
+      res.data.forEach(
+        (user) => (user.createdAt = daysJS(user.createdAt).format('DD/MM/YYYY'))
+      );
       setUsers(res.data);
     };
     getUsers();
@@ -69,7 +72,7 @@ const Users = () => {
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((a) => (
                 <th key={a.id} onClick={a.column.getToggleSortingHandler()}>
-                  {flexRender(a.column.columnDef.header, a.getContext())}
+                  {flexRender(a.column.columnDef.Header, a.getContext())}
                   {{ asc: '🔼', desc: '🔽' }[a.column.getIsSorted() ?? null]}
                 </th>
               ))}
