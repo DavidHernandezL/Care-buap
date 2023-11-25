@@ -15,7 +15,6 @@ import {
 } from '../services/exercise';
 import InputArea from '../components/InputArea';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { editExercisesSchema, createExerciseSchema } from '../utils/validationSchemas';
 
 const validateData = async (values) => {
   const errors = {};
