@@ -11,7 +11,7 @@ const MedicalCard = ({ professional }) => {
 
 const Card = styled.div`
   display: flex;
-  width: 100%;
+  width: clamp(280px, 100%, 400px);
   align-items: center;
   gap: 0.5rem;
   padding: 1rem;
@@ -25,9 +25,20 @@ const Card = styled.div`
     object-fit: cover;
   }
   h2 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
     color: rgba(25, 25, 25, 0.5);
+  }
+
+  @media screen and (max-width: 768px) {
+    h2 {
+      font-size: 1rem;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
   }
 `;
 

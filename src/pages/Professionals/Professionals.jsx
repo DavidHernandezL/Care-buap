@@ -17,7 +17,7 @@ const Professionals = () => {
   useEffect(() => {
     const getDoctors = async () => {
       const { data: res } = await getProfessionalsRequest();
-      
+
       const psychologists = res.data.filter(
         (professional) => professional.type === 'psychologist'
       );
@@ -63,13 +63,17 @@ const Professionals = () => {
 };
 
 const DoctorsTypesList = styled.ul`
-  margin: 20px;
+  margin: 0 0 3.5rem 0;
   padding: 20px;
   border-radius: 20px;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   grid-gap: 30px;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: auto;
+  }
 `;
 
 const Title = styled.h2`

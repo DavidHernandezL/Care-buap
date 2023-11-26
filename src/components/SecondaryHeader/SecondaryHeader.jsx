@@ -38,6 +38,7 @@ const Header = styled.header`
   position: sticky;
   top: 0;
   z-index: 100;
+  width: 100%;
 `;
 
 const StyledLink = styled(Link)`

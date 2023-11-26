@@ -73,7 +73,14 @@ const ListLinks = styled.ul`
 `;
 
 const ListItems = styled.li`
-  width: 4rem;
+  padding: 0.8rem 0;
+
+  @media screen and (max-width: 768px) {
+    svg {
+      width: 1.2rem;
+      height: 1.3rem;
+    }
+  }
 `;
 
 const LinkItem = styled(NavLink)`
@@ -88,6 +95,11 @@ const Label = styled.span`
   line-height: 1rem;
   font-weight: 600;
   margin-top: 0.5rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.65rem;
+    line-height: 0.65rem;
+  }
 `;
 
 export default NavBar;
