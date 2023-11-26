@@ -53,8 +53,6 @@ const validateData = async (values) => {
 const ExercisesForm = () => {
   const { id } = useParams();
 
-  const schema = id ? editExercisesSchema : createExerciseSchema;
-
   const [steps, setSteps] = useState([]);
   const navigate = useNavigate();
   const {
@@ -74,7 +72,6 @@ const ExercisesForm = () => {
   useEffect(() => {
     const getProfesional = async () => {
       const { data: res } = await getExerciseRequest(id);
-      console.log(res.data);
       setValue('name', res.data.name);
       setValue('description', res.data.description);
       setValue('type', res.data.type);
@@ -112,8 +109,6 @@ const ExercisesForm = () => {
     }
   };
 
-  console.log(errors);
-  console.log('wat', watch('steps'));
   return (
     <>
       <ReturnHeader title='Editar Ejercicio' />
@@ -202,7 +197,9 @@ const ExercisesForm = () => {
                 </ul>
               </div>
 
-              <ButtonPrimary type='submit'>Actualizar Información</ButtonPrimary>
+              <ButtonPrimary type='submit'>
+                {id ? 'Actualizar información' : 'Agregar ejercicio'}
+              </ButtonPrimary>
             </InputSection>
           </form>
         </FormProvider>
