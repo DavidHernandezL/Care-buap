@@ -82,10 +82,10 @@ const Journal = () => {
                   })}
             </DateStyled>
             <Input
-              label='Titulo'
+              label='Título'
               name={'title'}
               {...{
-                placeholder: 'Escribe el titulo de tu diario',
+                placeholder: 'Escribe el título de tu diario',
               }}
             />
             {errors.title && <ErrorMessage>{errors.title.message}</ErrorMessage>}

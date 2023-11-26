@@ -53,7 +53,7 @@ const ProfesionalForm = () => {
 
   return (
     <>
-      <ReturnHeader title='Editar Especialista' />
+      <ReturnHeader title={id !== 'add' ? 'Editar profesional' : 'Agregar profesional'} />
       <Container>
         <FormProvider {...methods}>
           <form style={{ width: '100%' }} onSubmit={methods.handleSubmit(onSubmit)}>
@@ -107,7 +107,7 @@ const ProfesionalForm = () => {
               </RadioField>
               {errors.type && <ErrorMessage>{errors.type.message}</ErrorMessage>}
               <Input
-                label='Pagina web'
+                label='Página web'
                 name={'page'}
                 {...{
                   placeholder: 'Cambiar url de pagina web',

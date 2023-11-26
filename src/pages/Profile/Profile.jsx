@@ -3,6 +3,7 @@ import SecondaryHeader from '../../components/SecondaryHeader';
 import NavBar from '../../components/NavBar/NavBar';
 import styled from 'styled-components';
 import { useAuth } from '../../context/AuthContext';
+import ButtonChat from '../../components/ButtonChat';
 
 const Profile = () => {
   const { user } = useAuth();
@@ -18,6 +19,7 @@ const Profile = () => {
           <p>{user.studentId}</p>
         </section>
       </UserCard>
+      <ButtonChat />
       <NavBar />
     </>
   );

@@ -37,7 +37,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <SecondaryHeader title={'Dashboard'} />;
+      <SecondaryHeader title={'Administrar'} />;
       <Container>
         <UserSection>
           <Info>

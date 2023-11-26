@@ -93,7 +93,7 @@ const ProfessionalsD = () => {
   }, []);
   return (
     <>
-      <ReturnHeader title={'Usuarios'} />
+      <ReturnHeader title={'Profesionales'} />
       <Main>
         <LinkStyled to='/dashboard/professionals/add'>Agregar profesional</LinkStyled>
         <table>
@@ -102,7 +102,7 @@ const ProfessionalsD = () => {
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((a) => (
                   <th key={a.id} onClick={a.column.getToggleSortingHandler()}>
-                    {flexRender(a.column.columnDef.header, a.getContext())}
+                    {flexRender(a.column.columnDef.Header, a.getContext())}
                     {{ asc: '🔼', desc: '🔽' }[a.column.getIsSorted() ?? null]}
                   </th>
                 ))}

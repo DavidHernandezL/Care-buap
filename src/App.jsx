@@ -27,6 +27,7 @@ import ProfessionalsD from './pages/ProfessionalsD/ProfessionalsD';
 import ProfessionalForm from './pages/ProfessionalForm/';
 import Songs from './pages/Songs/Songs';
 import ExercisesForm from './pages/ExercisesForm';
+import Chat from './pages/Chat';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
               <Route path='/Journals' element={<Journal />} />
               <Route path='/Professionals' element={<Professionals />} />
               <Route path='/Professionals/:type/:id' element={<MedicalProfile />} />
+              <Route path='/chat/:id' element={<Chat />} />
               <Route element={<RoleGuard />}>
                 <Route path='/dashboard' element={<Dashboard />} />
                 <Route path='/dashboard/users' element={<Users />} />
