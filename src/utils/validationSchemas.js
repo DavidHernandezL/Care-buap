@@ -89,7 +89,7 @@ export const professionalSchema = z.object({
   fullName: z
     .string()
     .min(3, 'El nombre debe tener al menos 3 caracteres')
-    .regex(/^[a-zA-ZáéíóúüñÑ\s]+$/, {
+    .regex(/^[a-zA-ZáéíóúüñÑ.\s]+$/, {
       message: 'El nombre solo puede contener letras',
     })
     .refine((value) => {

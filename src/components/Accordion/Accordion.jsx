@@ -46,7 +46,11 @@ const Accordion = ({ data }) => {
 
             <div
               className={`accordion__content`}
-              style={activeItem === index ? { height: `${scrollHeight}px` } : {}}
+              style={
+                activeItem === index
+                  ? { height: `${scrollHeight}px`, overflowY: 'scroll' }
+                  : {}
+              }
             >
               <p className='accordion__description'>{item.description}</p>
               {item.steps.map((step, index) => (

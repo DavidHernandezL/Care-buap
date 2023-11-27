@@ -70,3 +70,22 @@ td {
 th {
   background-color: #dddddd;
 }
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #00b5e2 #ffffff;
+}
+
+*::-webkit-scrollbar {
+  width: 14px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #00b5e2;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}

@@ -127,7 +127,7 @@ const ProfesionalForm = () => {
               />
               {errors.image && <ErrorMessage>{errors.image.message}</ErrorMessage>}
               <ButtonPrimary type='submit'>
-                {id !== 'add' ? 'Editar especialista' : 'Agregar especialista'}
+                {id !== 'add' ? 'Editar profesional' : 'Agregar profesional'}
               </ButtonPrimary>
             </InputSection>
           </form>

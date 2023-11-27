@@ -154,6 +154,10 @@ body {
   font-weight: 600;
 }
 
+.accordion__content {
+  overflow-y: scroll;
+}
+
 /*=============== MEDIA QUERIES ===============*/
 /* For medium devices */
 @media screen and (min-width: 576px) {

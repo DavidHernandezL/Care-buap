@@ -38,6 +38,7 @@ export const AuthProvider = ({ children }) => {
     const checkLogin = async () => {
       const cookies = Cookies.get();
       console.log(cookies);
+      console.log('cookies');
       if (!cookies.token) {
         setIsAuthenticated(false);
         setLoading(false);
