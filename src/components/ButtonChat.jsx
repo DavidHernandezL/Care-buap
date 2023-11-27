@@ -4,9 +4,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 const ButtonChat = () => {
   return (
-    <Container to={`/chat/${uuidv4()}`}>
+    <Container to={`/chats/${uuidv4()}`}>
       <Img src='/assets/logo.svg' alt='Logo App' />
-      <i class='bx bx-plus'></i>
+      <i className='bx bx-plus'></i>
     </Container>
   );
 };

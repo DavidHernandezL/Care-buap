@@ -51,7 +51,7 @@ function App() {
               <Route path='/Journals' element={<Journal />} />
               <Route path='/Professionals' element={<Professionals />} />
               <Route path='/Professionals/:type/:id' element={<MedicalProfile />} />
-              <Route path='/chat/:id' element={<Chat />} />
+              <Route path='/chats/:id' element={<Chat />} />
               <Route element={<RoleGuard />}>
                 <Route path='/dashboard' element={<Dashboard />} />
                 <Route path='/dashboard/users' element={<Users />} />

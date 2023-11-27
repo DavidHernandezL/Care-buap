@@ -1,16 +1,37 @@
 import React, { useState } from 'react';
 import ReturnHeader from '../components/ReturnHeader/ReturnHeader';
+import { io } from 'socket.io-client';
 import styled from 'styled-components';
+import { useEffect } from 'react';
+import { addMessage, createChat, getChatById } from '../services/chat';
+import { useParams } from 'react-router-dom';
+import { useNavigate, redirect } from 'react-router-dom';
+
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
+  const [chatId, setChatId] = useState('');
+  const navigate = useNavigate();
+  const { id } = useParams();
 
-  const handleSendMessage = (e) => {
+  useEffect(() => {
+    if (!id) return;
+    const getMessages = async () => {
+      const { data } = await createChat(id);
+      setChatId(data._id);
+    };
+    getMessages();
+  }, []);
+
+  const handleSendMessage = async (e) => {
     e.preventDefault();
     if (message.trim() === '') {
       return;
     }
-    setMessages([...messages, { message, user: 'user' }]);
+    const newMessage = { message, user: 'user' };
+    const res = await addMessage(chatId, newMessage);
+    console.log(res.data);
+    setMessages([...messages, ...res.data]);
     setMessage('');
   };
 
@@ -20,10 +41,10 @@ const Chat = () => {
       <Container>
         <ChatContainer>
           {messages.map((message, index) => {
-            if (message.user === 'user') {
-              return <MessageUser key={index}>{message.message}</MessageUser>;
+            if (message.role === 'user') {
+              return <MessageUser key={index}>{message.content}</MessageUser>;
             } else {
-              return <MessageBot key={index}>{message.message}</MessageBot>;
+              return <MessageBot key={index}>{message.content}</MessageBot>;
             }
           })}
         </ChatContainer>
@@ -51,7 +72,7 @@ const Container = styled.main`
   width: 100%;
   height: 92vh;
   background-image: url('/assets/chat.png');
-
+  margin-top: 1rem;
   form {
     width: 60%;
     display: flex;
@@ -70,6 +91,7 @@ const ChatContainer = styled.section`
   width: 60%;
   border-radius: 1rem;
   position: relative;
+  margin-top: 2rem;
 `;
 
 const InputMessage = styled.input`
