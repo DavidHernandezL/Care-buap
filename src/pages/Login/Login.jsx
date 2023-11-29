@@ -8,7 +8,7 @@ import InputPassword from '@components/InputPassword';
 import MainHeader from '@components/MainHeader';
 
 import { loginSchema } from '@utils/validationSchemas';
-import { Container, Form, LinkStyled } from './styles';
+import { Container, DownloadButton, Form, LinkStyled } from './styles';
 import Loader from '../../components/Loader';
 import { useAuth } from '../../context/AuthContext';
 import { useEffect } from 'react';
@@ -16,74 +16,88 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 const Login = () => {
-  const { signin, errors: loginErrors, isAuthenticated } = useAuth();
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+	const { signin, errors: loginErrors, isAuthenticated } = useAuth();
+	const [loading, setLoading] = useState(false);
+	const navigate = useNavigate();
 
-  const {
-    formState: { errors },
-    ...methods
-  } = useForm({ resolver: zodResolver(loginSchema) });
+	const {
+		formState: { errors },
+		...methods
+	} = useForm({ resolver: zodResolver(loginSchema) });
 
-  const loginUser = async (data) => {
-    setLoading(true);
-    signin(data);
-  };
+	const loginUser = async data => {
+		setLoading(true);
+		signin(data);
+	};
 
-  useEffect(() => {
-    if (loginErrors) {
-      setLoading(false);
-    }
-  }, [loginErrors]);
+	useEffect(() => {
+		if (loginErrors) {
+			setLoading(false);
+		}
+	}, [loginErrors]);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      setLoading(false);
-      navigate('/profile');
-    }
-  }, [isAuthenticated]);
+	useEffect(() => {
+		if (isAuthenticated) {
+			setLoading(false);
+			navigate('/profile');
+		}
+	}, [isAuthenticated]);
 
-  return (
-    <>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          <MainHeader title={'Inicio de sesión'} subtitle={'Ingrese sus credenciales'} />
-          <Container>
-            <FormProvider {...methods}>
-              <Form style={{ width: '100%' }} onSubmit={methods.handleSubmit(loginUser)}>
-                {loginErrors && <ErrorMessage>{loginErrors.msg}</ErrorMessage>}
-                <Input
-                  label='Matrícula'
-                  name={'studentId'}
-                  registerOptions={{ valueAsNumber: true }}
-                  {...{
-                    placeholder: 'Ingrese su matrícula (9 dígitos)',
-                    type: 'number',
-                    inputMode: 'numeric',
-                  }}
-                />
-                {errors.studentId && (
-                  <ErrorMessage>{errors.studentId.message}</ErrorMessage>
-                )}
-                <InputPassword label='Contraseña' name={'password'} />
-                {errors.password && (
-                  <ErrorMessage>{errors.password.message}</ErrorMessage>
-                )}
-                <ButtonPrimary type='submit'>Iniciar sesión</ButtonPrimary>
-              </Form>
-              <LinkStyled to='/forgot-password'>¿Olvidaste tu contraseña?</LinkStyled>
-              <p>
-                ¿No tienes una cuenta?{' '}
-                <LinkStyled to='/auth/register'>Regístrate aquí</LinkStyled>
-              </p>
-            </FormProvider>
-          </Container>
-        </>
-      )}
-    </>
-  );
+	return (
+		<>
+			{loading ? (
+				<Loader />
+			) : (
+				<>
+					<MainHeader
+						title={'Inicio de sesión'}
+						subtitle={'Ingrese sus credenciales'}
+					/>
+					<Container>
+						<FormProvider {...methods}>
+							<Form
+								style={{ width: '100%' }}
+								onSubmit={methods.handleSubmit(loginUser)}
+							>
+								{loginErrors && <ErrorMessage>{loginErrors.msg}</ErrorMessage>}
+								<Input
+									label='Matrícula'
+									name={'studentId'}
+									registerOptions={{ valueAsNumber: true }}
+									{...{
+										placeholder: 'Ingrese su matrícula (9 dígitos)',
+										type: 'number',
+										inputMode: 'numeric',
+									}}
+								/>
+								{errors.studentId && (
+									<ErrorMessage>{errors.studentId.message}</ErrorMessage>
+								)}
+								<InputPassword label='Contraseña' name={'password'} />
+								{errors.password && (
+									<ErrorMessage>{errors.password.message}</ErrorMessage>
+								)}
+								<ButtonPrimary type='submit'>Iniciar sesión</ButtonPrimary>
+							</Form>
+							<LinkStyled to='/forgot-password'>
+								¿Olvidaste tu contraseña?
+							</LinkStyled>
+							<p>
+								¿No tienes una cuenta?{' '}
+								<LinkStyled to='/auth/register'>Regístrate aquí</LinkStyled>
+							</p>
+							<DownloadButton
+								href='/Manual De Usuario CareBUAP.pdf'
+								download={'Manual De Usuario CareBUAP.pdf'}
+							>
+								<i class='bx bx-download'></i> Descargar manual de usuario
+							</DownloadButton>
+						</FormProvider>
+					</Container>
+				</>
+			)}
+		</>
+	);
 };
 
 export default Login;
