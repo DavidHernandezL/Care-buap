@@ -100,6 +100,13 @@ const Container = styled.main`
 		align-items: center;
 		margin: 1.5rem;
 	}
+
+	@media screen and (max-width: 768px) {
+		font-size: 0.8rem;
+		form {
+			width: 100%;
+		}
+	}
 `;
 
 const ChatContainer = styled.section`
@@ -112,6 +119,10 @@ const ChatContainer = styled.section`
 	border-radius: 1rem;
 	position: relative;
 	margin-top: 2rem;
+
+	@media screen and (max-width: 768px) {
+		width: 100%;
+	}
 `;
 
 const InputMessage = styled.input`
@@ -124,6 +135,10 @@ const InputMessage = styled.input`
 	font-size: 1.2rem;
 	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 	border: 1px solid rgba(0, 0, 0, 0.05);
+
+	@media screen and (max-width: 768px) {
+		font-size: 0.8rem;
+	}
 `;
 
 const SendButton = styled.button`
@@ -155,6 +170,10 @@ const MessageUser = styled.p`
 	margin-bottom: 1rem;
 	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 	align-self: flex-end;
+
+	@media screen and (max-width: 768px) {
+		font-size: 0.8rem;
+	}
 `;
 
 const MessageBot = styled.p`
@@ -166,5 +185,9 @@ const MessageBot = styled.p`
 	color: #fff;
 	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 	align-self: flex-start;
+
+	@media screen and (max-width: 768px) {
+		font-size: 0.8rem;
+	}
 `;
 export default Chat;

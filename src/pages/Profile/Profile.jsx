@@ -78,5 +78,54 @@ const UserCard = styled.article`
 			color: #191919bf;
 		}
 	}
+
+	@media screen and (max-width: 768px) {
+		flex-direction: column;
+		width: 90%;
+		margin: 1rem auto;
+		padding: 1rem 0;
+		justify-content: center;
+		align-items: center;
+		img {
+			width: 6rem;
+			height: 6rem;
+			border-radius: 50%;
+			margin-bottom: 1rem;
+			object-fit: cover;
+			border: 6px solid #eaeaea;
+		}
+
+		a {
+			background-color: #00b5e2;
+			border-radius: 0.5rem;
+			padding: 1rem;
+			text-decoration: none;
+			font-size: 1.3rem;
+			font-weight: 400;
+			margin-bottom: 0.5rem;
+			line-height: 14px;
+			color: #fff;
+			text-align: center;
+			margin: 0.45rem;
+		}
+
+		section {
+			h3 {
+				font-size: 1.5rem;
+				font-weight: 700;
+				margin-bottom: 0.5rem;
+				line-height: 20px;
+				color: #191919f2;
+			}
+
+			p {
+				font-size: 1.3rem;
+				font-weight: 400;
+				margin-bottom: 0.5rem;
+				line-height: 14px;
+				color: #191919bf;
+			}
+		}
+	}
 `;
 export default Profile;
