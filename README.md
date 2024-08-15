@@ -1,8 +1,30 @@
-# React + Vite
+# Descripción del Proyecto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto, desarrollado con React, es una aplicación web con un chatbot integrado usando la API de OpenAI. Su objetivo principal es crear una forma de apoyo emocional a los estudiante de la Benemérita Universidad Autónoma de Puebla (BUAP).
 
-Currently, two official plugins are available:
+## Tecnologías Utilizadas
+ - React: Biblioteca de JavaScript para construir interfaces de usuario.
+ - React Router
+ - Styled Components
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Instalación
+
+Clonar el repositorio:
+
+```
+git clone https://github.com/DavidHernandezL/Care-buap
+```
+
+Instalar las dependencias:
+
+```
+cd Care-buap
+npm install
+```
+
+Cómo ejecutar el proyecto
+Iniciar el servidor de desarrollo:
+```
+npm start
+```
+![image](https://github.com/user-attachments/assets/c1af3957-dd14-47c7-8a3a-76a67c9bb2e1)
