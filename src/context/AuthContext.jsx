@@ -89,7 +89,7 @@ export const AuthProvider = ({ children }) => {
 	};
 
 	const logout = () => {
-		Cookies.remove('token');
+		localStorage.remove('token');
 		setUser(null);
 		setIsAuthenticated(false);
 	};
